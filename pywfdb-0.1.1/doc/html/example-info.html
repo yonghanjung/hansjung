@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4: http://docutils.sourceforge.net/" />
+<title></title>
+<link rel="stylesheet" href="css/python.css" type="text/css" />
+</head>
+<body>
+<div class="document">
+<div class="section">
+<h1><a id="reading-informations-from-record" name="reading-informations-from-record">Reading informations from record</a></h1>
+<p>Here you can see how to open record, read samples from signals stored
+in record, access annotation and filter events by type.</p>
+<p class="source-link"><a class="reference" href="demo/readinfo.py">Source file</a></p>
+<pre class="pycode doctest-block"><span class="kwd">import</span> <span class="name">pywfdb</span>
+<span class="kwd">import</span> <span class="name">time</span>
+
+<span class="name">record</span> <span class="op">=</span> <span class="str">"d:/mitdb/101"</span>
+
+<span class="name">rec</span> <span class="op">=</span> <span class="name">pywfdb</span><span class="op">.</span><span class="name">Record</span><span class="op">(</span><span class="name">record</span><span class="op">)</span>
+
+<span class="kwd">print</span> <span class="name">rec</span>
+
+<span class="kwd">print</span>
+<span class="kwd">print</span> <span class="str">"Reading data from %d signals from record %s:"</span> <span class="op">%</span> <span class="op">(</span><span class="name">rec</span><span class="op">.</span><span class="name">nsig</span><span class="op">,</span> <span class="name">rec</span><span class="op">.</span><span class="name">record</span><span class="op">)</span>
+
+<span class="kwd">for</span> <span class="name">name</span> <span class="kwd">in</span> <span class="name">rec</span><span class="op">.</span><span class="name">signal_names</span><span class="op">:</span>
+    <span class="kwd">print</span> <span class="op">(</span><span class="str">"Reading 20000 of %d samples from signal %s..."</span> <span class="op">%</span>
+                                <span class="op">(</span><span class="name">rec</span><span class="op">.</span><span class="name">signal_info</span><span class="op">(</span><span class="name">name</span><span class="op">)</span><span class="op">[</span><span class="str">"samples"</span><span class="op">]</span><span class="op">,</span> <span class="name">name</span><span class="op">)</span><span class="op">)</span><span class="op">,</span>
+
+    <span class="name">signal</span> <span class="op">=</span> <span class="name">rec</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="name">name</span><span class="op">,</span> <span class="name">start</span><span class="op">=</span><span class="num">1000</span><span class="op">,</span> <span class="name">length</span><span class="op">=</span><span class="num">20000</span><span class="op">)</span>
+    <span class="kwd">print</span> <span class="str">" got %d samples."</span> <span class="op">%</span> <span class="name">len</span><span class="op">(</span><span class="name">signal</span><span class="op">)</span>
+    <span class="kwd">print</span> <span class="str">"Printing 5 samples:"</span><span class="op">,</span> <span class="str">"[%.3f, %.3f, %.3f, %.3f, %.3f]"</span> <span class="op">%</span> <span class="name">tuple</span><span class="op">(</span><span class="name">signal</span><span class="op">[</span><span class="op">:</span><span class="num">5</span><span class="op">]</span><span class="op">)</span>
+    <span class="kwd">print</span>
+
+
+<span class="kwd">print</span> <span class="str">"Reading first 5s of annotation from record %s:"</span> <span class="op">%</span> <span class="name">rec</span><span class="op">.</span><span class="name">record</span>
+
+<span class="name">ann</span> <span class="op">=</span> <span class="name">rec</span><span class="op">.</span><span class="name">annotation</span><span class="op">(</span><span class="op">)</span> <span class="com"># assuming default annotation file '.atr'</span>
+<span class="kwd">for</span> <span class="name">a</span> <span class="kwd">in</span> <span class="name">ann</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="name">int</span><span class="op">(</span><span class="num">5</span><span class="op">*</span><span class="name">rec</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span><span class="op">)</span><span class="op">:</span>
+    <span class="kwd">print</span> <span class="str">" "</span><span class="op">,</span> <span class="name">a</span>
+
+<span class="kwd">print</span>
+<span class="kwd">print</span> <span class="str">"Reading 5s of annotation from record %s, filtered by type N:"</span> <span class="op">%</span> <span class="name">rec</span><span class="op">.</span><span class="name">record</span>
+<span class="name">ann</span> <span class="op">=</span> <span class="name">rec</span><span class="op">.</span><span class="name">annotation</span><span class="op">(</span><span class="op">)</span>
+<span class="kwd">for</span> <span class="name">a</span> <span class="kwd">in</span> <span class="name">ann</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="name">int</span><span class="op">(</span><span class="num">5</span><span class="op">*</span><span class="name">rec</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span><span class="op">,</span> <span class="name">anntype</span><span class="op">=</span><span class="name">pywfdb</span><span class="op">.</span><span class="name">EcgCodes</span><span class="op">.</span><span class="name">NORMAL</span><span class="op">)</span><span class="op">:</span>
+    <span class="kwd">print</span> <span class="str">" "</span><span class="op">,</span> <span class="name">a</span><span class="txt"></span></pre><!-- Output
+- - - - - - -->
+<!-- ::
+
+Record 101
+Starting time:      0:00
+Sampling frequency: 360 Hz
+2 signals
+Signal 0:
+ File: 101.dat
+ Description: MLII
+ Gain: 200 adu/mV
+ Initial value: 955
+ Storage format: 212
+ I/O: can be unbuffered
+ ADC resolution: 11 bits
+ ADC zero: 1024
+ Length:    30:05 (650000 sample intervals)
+ Checksum: 29832
+Signal 1:
+ File: 101.dat
+ Description: V1
+ Gain: 200 adu/mV
+ Initial value: 992
+ Storage format: 212
+ I/O: can be unbuffered
+ ADC resolution: 11 bits
+ ADC zero: 1024
+ Length:    30:05 (650000 sample intervals)
+ Checksum: 19589
+
+
+Reading data from 2 signals from record 101:
+Reading 20000 of 650000 samples from signal MLII...  got 20000 samples.
+Printing 5 samples: [-0.390, -0.400, -0.395, -0.380, -0.375]
+
+Reading 20000 of 650000 samples from signal V1...  got 20000 samples.
+Printing 5 samples: [-0.100, -0.105, -0.100, -0.100, -0.095]
+
+Reading first 5s of annotation from record 101:
+  [+ (28) 7] - Rhythm change at 0:00.
+  [N (1) 83] - Normal beat at 0:00.
+  [N (1) 396] - Normal beat at 0:01.
+  [N (1) 711] - Normal beat at 0:01.
+  [N (1) 1032] - Normal beat at 0:02.
+  [N (1) 1368] - Normal beat at 0:03.
+  [N (1) 1712] - Normal beat at 0:04.
+
+Reading first 5s of annotation from record 101, filtered by type N (Normal QRS):
+  [N (1) 83] - Normal beat at 0:00.
+  [N (1) 396] - Normal beat at 0:01.
+  [N (1) 711] - Normal beat at 0:01.
+  [N (1) 1032] - Normal beat at 0:02.
+  [N (1) 1368] - Normal beat at 0:03.
+  [N (1) 1712] - Normal beat at 0:04. -->
+</div>
+</div>
+</body>
+</html>

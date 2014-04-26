@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module pywfdb Details</title>
+</head>
+<body>
+<h1>Module: pywfdb</h1>
+<hr>
+<a name="class_Annotation"></a><h2>Class: Annotation</h2>
+<blockquote><pre>
+    Access annotation files.
+
+    Annotation(record, name='atr', stat=STAT_READ)
+
+        record  - path to record
+        name    - name of annotation file (extension)
+        stat    - annotation access mode
+                  STAT_READ - read annotation in MIT-BIH format
+                  STAT_READ_AHA - read annotation in AHA format
+
+    fields:
+        record  - record name
+        basedir - directory with record file
+        
+    </pre></blockquote>
+<blockquote><hr>
+<h3>Methods for class Annotation</h3>
+<blockquote>
+<a name="method_Annotation_read"></a><h3>Annotation.read()</h3>
+<blockquote><pre>read(start=0, length=0, anntype=0, annotator=0) -> list [AnnotationEntry]
+            start   - starting index
+            length  - samples count, if 0 - read all annotations
+            anntype - filter annotations by type (see EcgCodes)
+
+        Returns list of AnnotationEntry objects.
+        </pre></blockquote>
+<hr>
+</blockquote>
+</blockquote>
+<hr>
+<a name="class_AnnotationEntry"></a><h2>Class: AnnotationEntry</h2>
+<blockquote><pre>
+    Represents annotation event
+
+    AnnotationEntry(int time, int type, int subtype=0, int channel=0, int annotator=0, string aux="")
+        
+        time      - annotation time, in sample intervals from the beginning of the record 
+        type      - annotation type (see EcgCodes)
+        subtype   - annotation subtype
+        channel   - channel number
+        annotator - annotator number
+        aux       - auxiliary information 
+
+    fields:
+
+        time      - annotation time, in sample intervals from the beginning of the record 
+        type      - annotation type
+        subtype   - annotation subtype
+        channel   - channel number
+        annotator - annotator number
+        aux       - auxiliary information 
+        isqrs     - if annotation is of qrs type
+        typestr   - string representation of annotation type
+        description - description of annotation type
+
+    </pre></blockquote>
+<hr>
+<a name="class_Record"></a><h2>Class: Record</h2>
+<blockquote><pre>Access MIT-BIH database records.
+
+    Record(string record)
+
+        record - path to record (without extension. i.e. c:/physiobank/100)
+
+    fields:
+
+        record       - record name
+        nsig         - number of signals in record
+        frequency    - sampling frequency
+        signal_names - signals names
+        name         - alias for record
+    </pre></blockquote>
+<blockquote><hr>
+<h3>Methods for class Record</h3>
+<blockquote>
+<a name="method_Record_annotation"></a><h3>Record.annotation()</h3>
+<blockquote><pre>
+        annotation(name='atr', stat=STAT_READ) -> Annotation
+            name - annotation name (file extension)
+
+        Returns Annotation object for record.
+        </pre></blockquote>
+<hr>
+<a name="method_Record_close"></a><h3>Record.close()</h3>
+<blockquote><pre>
+        Close record files.
+        </pre></blockquote>
+<hr>
+<a name="method_Record_read"></a><h3>Record.read()</h3>
+<blockquote><pre>
+        read(signal_id, start=0, length=0, correct_gain=True) -> list
+        
+            signal_id    - signal number or signal name in record
+            start        - index in sample intervals from the beginning of the record 
+            length       - sample count, if 0 - read all annotations
+            correct_gain - return values in real physical units instead of sampled data file values
+        </pre></blockquote>
+<hr>
+<a name="method_Record_signal_info"></a><h3>Record.signal_info()</h3>
+<blockquote><pre>
+        signal_info(signal_id) -> dict
+            signal_id   - signal number or signal name in record
+
+        Returns dictionary with information about specified signal.
+        </pre></blockquote>
+<hr>
+</blockquote>
+</blockquote>
+<hr>
+<h2>Global Functions:</h2>
+<blockquote>
+<a name="function_verbose"></a><h3>verbose()</h3>
+<blockquote>
+    Set wfdblib to verbose mode (prints some extra info on error).
+    Debug only.
+    </blockquote>
+<hr>
+</blockquote>
+</body>
+</html>

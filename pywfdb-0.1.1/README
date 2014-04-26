@@ -1,0 +1,53 @@
+Intro
+-----
+
+Pywfdb is a Python module which provides interface to WFDB library.
+It allows to access PhysioBank databases of physiologic signals
+from within Python in a simple and convenient manner.
+
+
+Download
+--------
+
+This package can be downloaded from http://pybytes.com/pywfdb/ website
+or from Cheese Shop http://cheeseshop.python.org/pypi/pywfdb
+
+
+Install
+-------
+
+    Download and unpack WFDB library files, preferably to pywfdb directory.
+     -> http://www.physionet.org/physiotools/wfdb-no-docs.tar.gz
+
+    Configure WFDB library with --without-netfiles switch, for example:
+        ./wfdb-10.3.17/configure --without-netfiles --static --static_only --prefix=. --mandir=.
+
+    Edit paths in setup.py to point to WFDB lib source and header files.
+
+    python setup.py install 
+
+
+Documentation
+-------------
+
+Documentation is available in `doc` directory as well as online at http://pybytes.com/pywfdb/
+
+See also examples in 'example' directory.
+
+
+Links
+-----
+
+For information about PhysioBank see http://www.physionet.org/physiobank/
+
+For information about WFDB library see http://www.physionet.org/physiotools/wfdb.shtml
+
+
+License
+-------
+
+Pywfdb is distributed under GPL license.
+
+
+----------------
+Filip Wasilewski

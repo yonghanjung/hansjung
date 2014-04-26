@@ -1,0 +1,140 @@
+@import url("default.csss"); 
+
+
+body { 
+	background-color: white; 
+	margin: 0px 0px 10px 0px; 
+	padding: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: medium;
+	width: 100%;
+}
+
+div.document {
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	font-size: small;
+
+}
+
+tt.docutils {
+	background: none;
+	font-size: 100%;
+}
+span.pre {
+    font-family: Lucida, Courier New;
+    font-size: 13px;
+}
+pre.literal-block  {
+    font-family: Lucida, Courier New;
+    font-size: 13px;
+    border: none;
+    background: white;
+}
+
+a.reference:visited {
+	color: #FF6600;
+	color: #3333FF;
+	text-decoration: none;
+}
+a.reference:hover {
+	color: #FF9900;
+	text-decoration: none;
+}
+a:link {
+	color: #FF6600;
+	color: #3333FF;
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+
+h1 {
+  font-size: x-large;
+  color:#555555;
+}
+h1.toc-backref, a.toc-backref {
+  font-size: x-large;
+  text-decoration: none ;
+  color: #555555;
+}
+
+h1.title {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  margin-bottom: 20px;
+}
+
+h2 {
+   font-size: x-large;
+   color:#555555;
+}
+
+h2.subtitle {
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: x-large;
+}
+
+
+img { border: none; }
+
+/* TOC */
+p.topic-title, #table-of-contents {
+	font-weight: bold;
+	color:#555555;
+	margin-bottom: 0px;
+}
+div.contents {
+	border: none;
+	padding: 3px 3px 0px 3px;
+	display: block;
+}
+ul.auto-toc {
+	margin-top: 4px;
+
+}
+ul.auto-toc li {
+	display: block;
+	list-style: none;
+	margin-left: -10px;
+}
+/* TOC */
+
+pre.pycode {
+    font-family: Lucida, Courier New;
+    font-size: 12px;
+    
+    border: 1px solid gray;
+    padding: 4px 4px 4px 4px;
+    width: auto;
+    background: #FCFCFF;
+}
+pre.pycode .num {
+    color: #333333;
+}
+pre.pycode .op {
+    color: #0000C0;
+}
+pre.pycode .str {
+    color: #004080;
+}
+pre.pycode .com {
+    color: #008000;
+}
+pre.pycode .name {
+    color: #000000;
+}
+pre.pycode .err {
+    color: #FF8080;
+}
+pre.pycode .kwd {
+    color: #C00000;
+}
+pre.pycode .txt {
+    color: #000000;
+}
+

@@ -1,0 +1,66 @@
+s0336lrem 15 1000 10000
+s0336lrem.mat 16+24 2000/mV 16 0 702 -9707 0 i
+s0336lrem.mat 16+24 2000/mV 16 0 1369 -11896 0 ii
+s0336lrem.mat 16+24 2000/mV 16 0 667 -2146 0 iii
+s0336lrem.mat 16+24 2000/mV 16 0 -1035 12375 0 avr
+s0336lrem.mat 16+24 2000/mV 16 0 17 29037 0 avl
+s0336lrem.mat 16+24 2000/mV 16 0 1019 -29810 0 avf
+s0336lrem.mat 16+24 2000/mV 16 0 2025 -11730 0 v1
+s0336lrem.mat 16+24 2000/mV 16 0 1080 31404 0 v2
+s0336lrem.mat 16+24 2000/mV 16 0 1251 -24038 0 v3
+s0336lrem.mat 16+24 2000/mV 16 0 6083 -23045 0 v4
+s0336lrem.mat 16+24 2000/mV 16 0 1080 -20364 0 v5
+s0336lrem.mat 16+24 2000/mV 16 0 235 3507 0 v6
+s0336lrem.mat 16+24 2000/mV 16 0 -202 8215 0 vx
+s0336lrem.mat 16+24 2000/mV 16 0 110 9781 0 vy
+s0336lrem.mat 16+24 2000/mV 16 0 603 11135 0 vz
+# age: 22
+# sex: female
+# ECG date: 01/10/1992
+# Diagnose:
+# Reason for admission: Healthy control
+# Acute infarction (localization): no
+# Former infarction (localization): no
+# Additional diagnoses: no
+# Smoker: no
+# Number of coronary vessels involved: unknown
+# Infarction date (acute): n/a
+# Previous infarction (1) date: n/a
+# Previous infarction (2) date: n/a
+# Hemodynamics:
+# Catheterization date: n/a
+# Ventriculography: n/a
+# Chest X-ray: n/a
+# Peripheral blood Pressure (syst/diast): n/a
+# Pulmonary artery pressure (at rest) (syst/diast): n/a
+# Pulmonary artery pressure (at rest) (mean): n/a
+# Pulmonary capillary wedge pressure (at rest): n/a
+# Cardiac output (at rest): n/a
+# Cardiac index (at rest): n/a
+# Stroke volume index (at rest): n/a
+# Pulmonary artery pressure (laod) (syst/diast): n/a
+# Pulmonary artery pressure (laod) (mean): n/a
+# Pulmonary capillary wedge pressure (load): n/a
+# Cardiac output (load): n/a
+# Cardiac index (load): n/a
+# Stroke volume index (load): n/a
+# Aorta (at rest) (syst/diast): n/a
+# Aorta (at rest) mean: n/a
+# Left ventricular enddiastolic pressure: n/a
+# Left coronary artery stenoses (RIVA): n/a
+# Left coronary artery stenoses (RCX): n/a
+# Right coronary artery stenoses (RCA): n/a
+# Echocardiography: n/a
+# Therapy:
+# Infarction date: n/a
+# Catheterization date: n/a
+# Admission date: n/a
+# Medication pre admission: n/a
+# Start lysis therapy (hh.mm): n/a
+# Lytic agent: n/a
+# Dosage (lytic agent): n/a
+# Additional medication: n/a
+# In hospital medication: n/a
+# Medication after discharge: n/a
+#Creator: wfdb2mat
+#Source: record ptbdb/patient185/s0336lre

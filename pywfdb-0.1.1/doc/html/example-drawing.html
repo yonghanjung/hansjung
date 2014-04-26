@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4: http://docutils.sourceforge.net/" />
+<title></title>
+<link rel="stylesheet" href="css/python.css" type="text/css" />
+</head>
+<body>
+<div class="document">
+<div class="section">
+<h1><a id="reading-and-plotting-informations-record-data" name="reading-and-plotting-informations-record-data">Reading and plotting informations record data</a></h1>
+<p>This demo shows how to read data and annotation from record.
+It also demonstrates some usage of <a class="reference" href="http://matplotlib.sourceforge.net">matplotlib</a> library to draw
+ecg plots.</p>
+<p>Output image looks like this:</p>
+<img alt="image/ecg_plot.png" src="image/ecg_plot.png" />
+<p class="source-link"><a class="reference" href="demo/plot.py">Source</a>:</p>
+<pre class="pycode doctest-block"><span class="kwd">import</span> <span class="name">numpy</span>
+<span class="kwd">import</span> <span class="name">matplotlib</span><span class="op">.</span><span class="name">pylab</span> <span class="name">as</span> <span class="name">pylab</span>
+<span class="kwd">from</span> <span class="name">matplotlib</span><span class="op">.</span><span class="name">widgets</span> <span class="kwd">import</span> <span class="name">Button</span>
+
+<span class="kwd">import</span> <span class="name">pywfdb</span>
+
+<span class="name">record_path</span> <span class="op">=</span> <span class="str">r"d:\mitdb\100"</span>
+
+<span class="name">record</span>  <span class="op">=</span> <span class="name">pywfdb</span><span class="op">.</span><span class="name">Record</span><span class="op">(</span><span class="name">record_path</span><span class="op">)</span>
+
+<span class="name">start_time</span> <span class="op">=</span> <span class="num">27</span>                              <span class="com"># beginning position in seconds</span>
+<span class="name">time</span> <span class="op">=</span> <span class="num">4</span>                                     <span class="com"># data length in seconds</span>
+<span class="name">sample_length</span> <span class="op">=</span> <span class="name">int</span><span class="op">(</span><span class="name">time</span> <span class="op">*</span> <span class="name">record</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span> <span class="com"># data length in sample units</span>
+<span class="name">end_time</span> <span class="op">=</span> <span class="name">start_time</span> <span class="op">+</span> <span class="name">time</span>                 <span class="com"># end position in seconds</span>
+
+<span class="name">signals_num</span> <span class="op">=</span> <span class="name">record</span><span class="op">.</span><span class="name">nsig</span>                    <span class="com"># number of signals in record</span>
+
+<span class="com"># default annotation file has .atr extension
+</span><span class="name">default_ann</span> <span class="op">=</span> <span class="name">record</span><span class="op">.</span><span class="name">annotation</span><span class="op">(</span><span class="op">)</span>
+
+<span class="com">## read all annotations for given range
+</span><span class="name">annotations</span> <span class="op">=</span> <span class="name">default_ann</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="name">int</span><span class="op">(</span><span class="name">start_time</span><span class="op">*</span><span class="name">record</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span><span class="op">,</span> <span class="name">sample_length</span><span class="op">)</span>
+
+<span class="com">## drawing stuff follows
+</span><span class="name">ylims</span> <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="num">1.5</span><span class="op">,</span> <span class="num">1.5</span><span class="op">)</span>
+<span class="name">t</span> <span class="op">=</span> <span class="name">numpy</span><span class="op">.</span><span class="name">arrayrange</span><span class="op">(</span><span class="name">start_time</span><span class="op">,</span> <span class="name">end_time</span><span class="op">,</span> <span class="num">1</span><span class="op">/</span><span class="name">record</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span>
+<span class="name">vl</span> <span class="op">=</span> <span class="name">numpy</span><span class="op">.</span><span class="name">arange</span><span class="op">(</span><span class="name">start_time</span><span class="op">,</span> <span class="name">end_time</span><span class="op">,</span> <span class="num">0.2</span><span class="op">)</span>
+<span class="name">hl</span> <span class="op">=</span> <span class="name">numpy</span><span class="op">.</span><span class="name">arange</span><span class="op">(</span><span class="name">ylims</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span> <span class="name">ylims</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="num">0.5</span><span class="op">)</span>
+
+<span class="name">f</span> <span class="op">=</span> <span class="name">pylab</span><span class="op">.</span><span class="name">figure</span><span class="op">(</span><span class="op">)</span>
+<span class="name">f</span><span class="op">.</span><span class="name">subplots_adjust</span><span class="op">(</span><span class="name">hspace</span><span class="op">=</span><span class="num">0.00001</span><span class="op">)</span>
+
+<span class="name">axes</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span>
+<span class="name">ax</span> <span class="op">=</span> <span class="name">pylab</span><span class="op">.</span><span class="name">subplot</span><span class="op">(</span><span class="name">signals_num</span><span class="op">,</span> <span class="num">1</span><span class="op">,</span> <span class="num">1</span><span class="op">)</span>
+<span class="name">pylab</span><span class="op">.</span><span class="name">title</span><span class="op">(</span><span class="str">'ECG record %s'</span> <span class="op">%</span> <span class="name">record</span><span class="op">.</span><span class="name">name</span><span class="op">)</span>
+
+<span class="name">annotation_lines</span> <span class="op">=</span> <span class="op">[</span><span class="name">ann</span><span class="op">.</span><span class="name">time</span><span class="op">/</span><span class="name">record</span><span class="op">.</span><span class="name">frequency</span> <span class="kwd">for</span> <span class="name">ann</span> <span class="kwd">in</span> <span class="name">annotations</span><span class="op">]</span>
+
+<span class="kwd">def</span> <span class="name">mark_annotations</span><span class="op">(</span><span class="name">ax</span><span class="op">)</span><span class="op">:</span>
+    <span class="name">annotation_font</span> <span class="op">=</span> <span class="op">{</span><span class="str">'family'</span><span class="op">:</span><span class="str">'monospace'</span><span class="op">,</span> <span class="str">'color'</span><span class="op">:</span><span class="str">'b'</span><span class="op">,</span>
+                           <span class="str">'weight'</span><span class="op">:</span><span class="str">'bolder'</span><span class="op">,</span> <span class="str">'size'</span><span class="op">:</span><span class="num">12</span><span class="op">}</span>
+    <span class="kwd">for</span> <span class="name">ann</span> <span class="kwd">in</span> <span class="name">annotations</span><span class="op">:</span>
+        <span class="name">ax</span><span class="op">.</span><span class="name">text</span><span class="op">(</span><span class="name">ann</span><span class="op">.</span><span class="name">time</span><span class="op">/</span><span class="name">record</span><span class="op">.</span><span class="name">frequency</span><span class="op">,</span> <span class="name">ylims</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">-</span><span class="num">0.2</span><span class="op">,</span> <span class="name">ann</span><span class="op">.</span><span class="name">typestr</span><span class="op">,</span>
+                        <span class="name">annotation_font</span><span class="op">,</span> <span class="name">horizontalalignment</span><span class="op">=</span><span class="str">'center'</span><span class="op">)</span>
+    <span class="name">ax</span><span class="op">.</span><span class="name">vlines</span><span class="op">(</span><span class="name">annotation_lines</span><span class="op">,</span> <span class="num">0.8</span><span class="op">*</span><span class="name">ylims</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span> <span class="num">0.8</span><span class="op">*</span><span class="name">ylims</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="name">linewidth</span><span class="op">=</span><span class="num">.5</span><span class="op">,</span>
+                  <span class="name">fmt</span><span class="op">=</span><span class="str">'b-'</span><span class="op">,</span> <span class="name">alpha</span><span class="op">=</span><span class="num">0.8</span><span class="op">)</span>
+
+<span class="kwd">for</span> <span class="name">i</span><span class="op">,</span> <span class="name">name</span> <span class="kwd">in</span> <span class="name">enumerate</span><span class="op">(</span><span class="name">record</span><span class="op">.</span><span class="name">signal_names</span><span class="op">)</span><span class="op">:</span>
+    <span class="name">ax</span> <span class="op">=</span> <span class="name">pylab</span><span class="op">.</span><span class="name">subplot</span><span class="op">(</span><span class="name">signals_num</span><span class="op">,</span> <span class="num">1</span><span class="op">,</span> <span class="name">i</span><span class="op">+</span><span class="num">1</span><span class="op">)</span>
+    <span class="name">axes</span><span class="op">.</span><span class="name">append</span><span class="op">(</span><span class="name">ax</span><span class="op">)</span>
+
+    <span class="name">pylab</span><span class="op">.</span><span class="name">ylabel</span><span class="op">(</span><span class="str">'voltage (%s)'</span> <span class="op">%</span> <span class="name">record</span><span class="op">.</span><span class="name">signal_info</span><span class="op">(</span><span class="name">name</span><span class="op">)</span><span class="op">[</span><span class="str">"units"</span><span class="op">]</span><span class="op">)</span>
+
+    <span class="com"># draw pink grid
+</span>    <span class="name">ax</span><span class="op">.</span><span class="name">vlines</span><span class="op">(</span><span class="name">vl</span><span class="op">,</span> <span class="name">ylims</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span> <span class="name">ylims</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="name">fmt</span><span class="op">=</span><span class="str">'r-'</span><span class="op">,</span> <span class="name">alpha</span><span class="op">=</span><span class="num">0.3</span><span class="op">)</span>
+    <span class="name">ax</span><span class="op">.</span><span class="name">hlines</span><span class="op">(</span><span class="name">hl</span><span class="op">,</span> <span class="name">start_time</span><span class="op">,</span> <span class="name">end_time</span><span class="op">,</span> <span class="name">fmt</span><span class="op">=</span><span class="str">'r-'</span><span class="op">,</span> <span class="name">alpha</span><span class="op">=</span><span class="num">0.3</span><span class="op">)</span>
+
+    <span class="com"># read data for specified signal
+</span>    <span class="com"># equal to record.read(i, ...
+</span>    <span class="name">y</span> <span class="op">=</span> <span class="name">record</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="name">name</span><span class="op">,</span> <span class="name">int</span><span class="op">(</span><span class="name">start_time</span><span class="op">*</span><span class="name">record</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span><span class="op">,</span> <span class="name">sample_length</span><span class="op">)</span>
+
+    <span class="com"># draw signal
+</span>    <span class="name">ax</span><span class="op">.</span><span class="name">plot</span><span class="op">(</span><span class="name">t</span><span class="op">,</span> <span class="name">y</span><span class="op">,</span> <span class="name">linewidth</span><span class="op">=</span><span class="num">1</span><span class="op">,</span> <span class="name">color</span><span class="op">=</span><span class="str">'k'</span><span class="op">,</span> <span class="name">alpha</span><span class="op">=</span><span class="num">1.0</span><span class="op">,</span> <span class="name">label</span><span class="op">=</span><span class="name">name</span><span class="op">)</span>
+    <span class="name">ax</span><span class="op">.</span><span class="name">text</span><span class="op">(</span><span class="name">start_time</span> <span class="op">+</span> <span class="num">1.01</span><span class="op">*</span><span class="name">time</span> <span class="op">,</span> <span class="num">1.2</span><span class="op">,</span> <span class="name">name</span><span class="op">,</span> <span class="name">color</span><span class="op">=</span><span class="str">'k'</span> <span class="op">)</span>
+
+    <span class="name">mark_annotations</span><span class="op">(</span><span class="name">ax</span><span class="op">)</span>
+
+    <span class="name">pylab</span><span class="op">.</span><span class="name">ylim</span><span class="op">(</span><span class="op">-</span><span class="num">1.5</span><span class="op">,</span> <span class="num">1.5</span><span class="op">)</span>
+    <span class="name">pylab</span><span class="op">.</span><span class="name">xlim</span><span class="op">(</span><span class="name">start_time</span><span class="op">,</span> <span class="name">end_time</span><span class="op">)</span>
+
+<span class="name">pylab</span><span class="op">.</span><span class="name">xlabel</span><span class="op">(</span><span class="str">'time (s)'</span><span class="op">)</span>
+<span class="name">xticklabels</span> <span class="op">=</span> <span class="op">[</span><span class="name">a</span><span class="op">.</span><span class="name">get_xticklabels</span><span class="op">(</span><span class="op">)</span> <span class="kwd">for</span> <span class="name">a</span> <span class="kwd">in</span> <span class="name">axes</span><span class="op">[</span><span class="op">:</span><span class="op">-</span><span class="num">1</span><span class="op">]</span><span class="op">]</span>
+<span class="name">pylab</span><span class="op">.</span><span class="name">setp</span><span class="op">(</span><span class="name">xticklabels</span><span class="op">,</span> <span class="name">visible</span><span class="op">=</span><span class="name">False</span><span class="op">)</span>
+
+<span class="name">pylab</span><span class="op">.</span><span class="name">savefig</span><span class="op">(</span><span class="str">'ecg_plot.png'</span><span class="op">)</span>
+<span class="name">pylab</span><span class="op">.</span><span class="name">show</span><span class="op">(</span><span class="op">)</span><span class="txt"></span></pre></div>
+</div>
+</body>
+</html>

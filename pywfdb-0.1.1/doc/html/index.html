@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4: http://docutils.sourceforge.net/" />
+<title>pywfdb</title>
+<meta content="pywfdb" name="keywords" />
+<meta content="pywfdb" lang="en" name="description" />
+<link rel="stylesheet" href="css/python.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="pywfdb">
+<h1 class="title">pywfdb</h1>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Accessing PhysioBank database from Python
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<p><cite>Pywfdb</cite> is a <a class="reference" href="http://python.org/">Python</a> module for accessing <a class="reference" href="http://www.physionet.org/physiobank/">PhysioBank</a> database
+of physiologic signals. It wraps <a class="reference" href="http://www.physionet.org/physiotools/wfdb.shtml">WFDB</a> library, providing easy,
+Object-Oriented interface.</p>
+<div class="contents local topic">
+<p class="topic-title first"><a id="table-of-contents" name="table-of-contents">Table of Contents</a></p>
+<ul class="auto-toc simple">
+<li><a class="reference" href="#download" id="id1" name="id1">1.&nbsp;&nbsp;&nbsp;Download</a></li>
+<li><a class="reference" href="#install" id="id2" name="id2">2.&nbsp;&nbsp;&nbsp;Install</a></li>
+<li><a class="reference" href="#documentation" id="id3" name="id3">3.&nbsp;&nbsp;&nbsp;Documentation</a></li>
+<li><a class="reference" href="#license" id="id4" name="id4">4.&nbsp;&nbsp;&nbsp;License</a></li>
+<li><a class="reference" href="#contact" id="id5" name="id5">5.&nbsp;&nbsp;&nbsp;Contact</a></li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id1" id="download" name="download">1.&nbsp;&nbsp;&nbsp;Download</a></h1>
+<p>Current, initial release of <cite>pywfdb</cite> is available for download:</p>
+<blockquote>
+<a class="reference" href="http://cheeseshop.python.org/packages/source/p/pywfdb/pywfdb-0.1.1.zip">pywfdb-0.1.1.zip</a></blockquote>
+<p>There is also precompiled binary version for Windows.</p>
+<blockquote>
+<a class="reference" href="http://cheeseshop.python.org/packages/2.4/p/pywfdb/pywfdb-0.1.1.win32-py2.4.exe">pywfdb-0.1.1.win32-py2.4.exe</a></blockquote>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id2" id="install" name="install">2.&nbsp;&nbsp;&nbsp;Install</a></h1>
+<p>If you want to instal <cite>pywfdb</cite> from source you need to download WFDB library
+source code. Direct link to the latest version is
+<a class="reference" href="http://www.physionet.org/physiotools/wfdb-no-docs.tar.gz">http://www.physionet.org/physiotools/wfdb-no-docs.tar.gz</a></p>
+<p>After downloading you have to:</p>
+<ol class="arabic">
+<li><p class="first">Unpack WFDB library files, preferably to <cite>pywfdb</cite> directory.</p>
+</li>
+<li><p class="first">Configure WFDB library with <tt class="docutils literal"><span class="pre">--without-netfiles</span></tt> switch, for example:</p>
+<pre class="literal-block">
+./configure --without-netfiles --static --static_only --prefix=. --mandir=.
+</pre>
+</li>
+<li><p class="first">Edit paths in setup.py to point to WFDB lib source and header files. If You have
+unpacked files to <cite>wfdbpy</cite> directory, the defaults should work.</p>
+</li>
+<li><p class="first">execute python setup.py script:</p>
+<pre class="literal-block">
+python setup.py install
+</pre>
+</li>
+</ol>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id3" id="documentation" name="documentation">3.&nbsp;&nbsp;&nbsp;Documentation</a></h1>
+<p>Sample Python session with <cite>pywfdb</cite> may look like this:</p>
+<pre class="pycode"><span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="kwd">import</span> <span class="name">pywfdb</span>
+<span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="name">record</span> <span class="op">=</span> <span class="name">pywfdb</span><span class="op">.</span><span class="name">Record</span><span class="op">(</span><span class="str">"d:/mitdb/100"</span><span class="op">)</span>
+<span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="kwd">print</span> <span class="name">record</span><span class="op">.</span><span class="name">signal_names</span>
+<span class="op">(</span><span class="str">'MLII'</span><span class="op">,</span> <span class="str">'V5'</span><span class="op">)</span>
+<span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="name">record</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="str">'MLII'</span><span class="op">,</span> <span class="num">1018</span><span class="op">,</span> <span class="num">5</span><span class="op">)</span> <span class="com"># read 5 samples beggining from sample 1018</span>
+<span class="op">[</span><span class="op">-</span><span class="num">0.38</span><span class="op">,</span> <span class="op">-</span><span class="num">0.375</span><span class="op">,</span> <span class="op">-</span><span class="num">0.375</span><span class="op">,</span> <span class="op">-</span><span class="num">0.375</span><span class="op">,</span> <span class="op">-</span><span class="num">0.375</span><span class="op">]</span>
+<span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="name">annotation</span> <span class="op">=</span> <span class="name">record</span><span class="op">.</span><span class="name">annotation</span><span class="op">(</span><span class="op">)</span>
+<span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="kwd">for</span> <span class="name">ann</span> <span class="kwd">in</span> <span class="name">annotation</span><span class="op">.</span><span class="name">read</span><span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="name">int</span><span class="op">(</span><span class="name">record</span><span class="op">.</span><span class="name">frequency</span><span class="op">)</span> <span class="op">*</span> <span class="num">2</span><span class="op">)</span><span class="op">:</span> <span class="com"># read two first seconds</span>
+<span class="op">.</span><span class="op">.</span><span class="op">.</span>     <span class="kwd">print</span> <span class="name">ann</span><span class="op">.</span><span class="name">time</span><span class="op">,</span> <span class="name">ann</span><span class="op">.</span><span class="name">type</span><span class="op">,</span> <span class="name">ann</span><span class="op">.</span><span class="name">typestr</span><span class="op">,</span> <span class="name">ann</span><span class="op">.</span><span class="name">isqrs</span><span class="op">,</span> <span class="name">ann</span><span class="op">.</span><span class="name">description</span>
+<span class="op">.</span><span class="op">.</span><span class="op">.</span>
+<span class="num">18</span> <span class="num">28</span> <span class="op">+</span> <span class="name">False</span> <span class="name">Rhythm</span> <span class="name">change</span>
+<span class="num">77</span> <span class="num">1</span> <span class="name">N</span> <span class="name">True</span> <span class="name">Normal</span> <span class="name">beat</span>
+<span class="num">370</span> <span class="num">1</span> <span class="name">N</span> <span class="name">True</span> <span class="name">Normal</span> <span class="name">beat</span>
+<span class="num">662</span> <span class="num">1</span> <span class="name">N</span> <span class="name">True</span> <span class="name">Normal</span> <span class="name">beat</span><span class="txt"></span></pre><!-- >>> import pywfdb
+>>> record = pywfdb.Record("d:/mitdb/100")
+>>> print record.signal_names
+('MLII', 'V5')
+>>> record.read('MLII', 1018, 5) # read 5 samples beggining from sample 1018
+[-0.38, -0.375, -0.375, -0.375, -0.375]
+>>> annotation = record.annotation()
+>>> for ann in annotation.read(0, int(record.frequency) * 2): # read two first seconds
+...     print ann.time, ann.type, ann.typestr, ann.isqrs, ann.description
+...
+18 28 + False Rhythm change
+77 1 N True Normal beat
+370 1 N True Normal beat
+662 1 N True Normal beat -->
+<p>See also <a class="reference" href="module-pywfdb-detail.html">module documentation</a> generated from Pyrex source or check out some examples:</p>
+<ul>
+<li><p class="first"><a class="reference" href="example-info.html">Reading signal and annotation data</a></p>
+</li>
+<li><p class="first"><a class="reference" href="example-drawing.html">Ploting data using matplotlib</a></p>
+<p><a class="reference" href="example-drawing.html"><img alt="ecg_thumb" src="image/ecg_plot_t.png" /></a></p>
+</li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id4" id="license" name="license">4.&nbsp;&nbsp;&nbsp;License</a></h1>
+<p><cite>Pywfdb</cite> is licensed under GPL license.</p>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id5" id="contact" name="contact">5.&nbsp;&nbsp;&nbsp;Contact</a></h1>
+<p>If you need support, have improvement proposal or just using
+this library in your software, feel free to contect me directly.</p>
+<p>Filip Wasilewski,
+&lt;<a class="reference" href="mailto:filipwasilewski&#64;gmail.com">filipwasilewski&#64;gmail.com</a>&gt;</p>
+</div>
+</div>
+</body>
+</html>

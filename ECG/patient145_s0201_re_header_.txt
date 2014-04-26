@@ -1,0 +1,66 @@
+s0201_rem 15 1000 10000
+s0201_rem.mat 16+24 2000/mV 16 0 -1402 -20524 0 i
+s0201_rem.mat 16+24 2000/mV 16 0 -1642 -6711 0 ii
+s0201_rem.mat 16+24 2000/mV 16 0 -240 9955 0 iii
+s0201_rem.mat 16+24 2000/mV 16 0 1521 -24107 0 avr
+s0201_rem.mat 16+24 2000/mV 16 0 -582 10570 0 avl
+s0201_rem.mat 16+24 2000/mV 16 0 -941 3583 0 avf
+s0201_rem.mat 16+24 2000/mV 16 0 -669 10980 0 v1
+s0201_rem.mat 16+24 2000/mV 16 0 373 -17552 0 v2
+s0201_rem.mat 16+24 2000/mV 16 0 -13 30458 0 v3
+s0201_rem.mat 16+24 2000/mV 16 0 91 -25632 0 v4
+s0201_rem.mat 16+24 2000/mV 16 0 -63 16217 0 v5
+s0201_rem.mat 16+24 2000/mV 16 0 14 -28649 0 v6
+s0201_rem.mat 16+24 2000/mV 16 0 431 -31365 0 vx
+s0201_rem.mat 16+24 2000/mV 16 0 -348 9512 0 vy
+s0201_rem.mat 16+24 2000/mV 16 0 201 26255 0 vz
+# age: 63
+# sex: male
+# ECG date: 18/07/1991
+# Diagnose:
+# Reason for admission: Myocardial infarction
+# Acute infarction (localization): no
+# Former infarction (localization): infero-postero-lateral
+# Additional diagnoses: Ventricular fibrillation, Arterial hypertension, Diabetes mellitus, Hyperlipoproteinemia Type IIb, Renal insufficiency
+# Smoker: no
+# Number of coronary vessels involved: 3
+# Infarction date (acute): n/a
+# Previous infarction (1) date: 05-Jan-91
+# Previous infarction (2) date: n/a
+# Hemodynamics:
+# Catheterization date: n/a
+# Ventriculography: n/a
+# Chest X-ray: n/a
+# Peripheral blood Pressure (syst/diast): n/a
+# Pulmonary artery pressure (at rest) (syst/diast): n/a
+# Pulmonary artery pressure (at rest) (mean): n/a
+# Pulmonary capillary wedge pressure (at rest): n/a
+# Cardiac output (at rest): n/a
+# Cardiac index (at rest): n/a
+# Stroke volume index (at rest): n/a
+# Pulmonary artery pressure (laod) (syst/diast): n/a
+# Pulmonary artery pressure (laod) (mean): n/a
+# Pulmonary capillary wedge pressure (load): n/a
+# Cardiac output (load): n/a
+# Cardiac index (load): n/a
+# Stroke volume index (load): n/a
+# Aorta (at rest) (syst/diast): n/a
+# Aorta (at rest) mean: n/a
+# Left ventricular enddiastolic pressure: n/a
+# Left coronary artery stenoses (RIVA): n/a
+# Left coronary artery stenoses (RCX): n/a
+# Right coronary artery stenoses (RCA): n/a
+# Echocardiography: n/a
+# Therapy:
+# Infarction date: n/a
+# Catheterization date: n/a
+# Admission date: n/a
+# Medication pre admission: n/a
+# Start lysis therapy (hh.mm): n/a
+# Lytic agent: n/a
+# Dosage (lytic agent): n/a
+# Additional medication: n/a
+# In hospital medication: n/a
+# Medication after discharge: n/a
+#Creator: wfdb2mat
+#Source: record ptbdb/patient145/s0201_re
