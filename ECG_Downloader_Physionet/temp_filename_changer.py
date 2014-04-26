@@ -17,3 +17,7 @@ while i < len(numbers):
 f.close()
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7176ac5ad3bbdd89bbcba086c57798a16b9bc877
