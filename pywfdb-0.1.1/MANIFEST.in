@@ -1,7 +1,0 @@
-include setup.py README COPYING HISTORY
-include MANIFEST.in README.txt INSTALL.txt CHANGES.txt ToDo.txt USAGE.txt version.txt
-exclude .svn
-recursive-include example *.py
-recursive-include doc/html *.html *.css *.png
-recursive-include pywfdb *.py *.pyx *.pxi *.pxd *.h *.c
-
