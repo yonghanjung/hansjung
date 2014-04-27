@@ -1,0 +1,349 @@
+1 Myocardial infarction 1
+2 Myocardial infarction 1
+3 Myocardial infarction 1
+4 Myocardial infarction 1
+5 Myocardial infarction 1
+6 Myocardial infarction 1
+7 Myocardial infarction 1
+8 Myocardial infarction 1
+9 Myocardial infarction 1
+12 Myocardial infarction 1
+14 Myocardial infarction 1
+15 Myocardial infarction 1
+16 Myocardial infarction 1
+18 Myocardial infarction 1
+19 Myocardial infarction 1
+26 Myocardial infarction 1
+30 Myocardial infarction 1
+32 Myocardial infarction 1
+38 Myocardial infarction 1
+44 Myocardial infarction 1
+46 Myocardial infarction 1
+48 Myocardial infarction 1
+57 Myocardial infarction 1
+58 Myocardial infarction 1
+59 Myocardial infarction 1
+60 Myocardial infarction 1
+61 Myocardial infarction 1
+62 Myocardial infarction 1
+63 Myocardial infarction 1
+64 Myocardial infarction 1
+65 Myocardial infarction 1
+66 Myocardial infarction 1
+67 Myocardial infarction 1
+68 Myocardial infarction 1
+69 Myocardial infarction 1
+70 Myocardial infarction 1
+71 Myocardial infarction 1
+72 Myocardial infarction 1
+73 Myocardial infarction 1
+74 Myocardial infarction 1
+75 Myocardial infarction 1
+76 Myocardial infarction 1
+77 Myocardial infarction 1
+79 Myocardial infarction 1
+80 Myocardial infarction 1
+81 Myocardial infarction 1
+82 Myocardial infarction 1
+83 Myocardial infarction 1
+84 Myocardial infarction 1
+85 Myocardial infarction 1
+86 Myocardial infarction 1
+87 Myocardial infarction 1
+88 Myocardial infarction 1
+89 Myocardial infarction 1
+90 Myocardial infarction 1
+91 Myocardial infarction 1
+92 Myocardial infarction 1
+93 Myocardial infarction 1
+94 Myocardial infarction 1
+95 Myocardial infarction 1
+96 Myocardial infarction 1
+97 Myocardial infarction 1
+98 Myocardial infarction 1
+99 Myocardial infarction 1
+100 Myocardial infarction 1
+101 Myocardial infarction 1
+102 Myocardial infarction 1
+103 Myocardial infarction 1
+104 Myocardial infarction 1
+105 Myocardial infarction 1
+106 Myocardial infarction 1
+107 Myocardial infarction 1
+108 Myocardial infarction 1
+109 Myocardial infarction 1
+110 Myocardial infarction 1
+111 Myocardial infarction 1
+112 Myocardial infarction 1
+113 Myocardial infarction 1
+114 Myocardial infarction 1
+115 Myocardial infarction 1
+116 Myocardial infarction 1
+117 Myocardial infarction 1
+118 Myocardial infarction 1
+119 Myocardial infarction 1
+120 Myocardial infarction 1
+121 Myocardial infarction 1
+122 Myocardial infarction 1
+123 Myocardial infarction 1
+124 Myocardial infarction 1
+125 Myocardial infarction 1
+126 Myocardial infarction 1
+127 Myocardial infarction 1
+128 Myocardial infarction 1
+129 Myocardial infarction 1
+130 Myocardial infarction 1
+131 Myocardial infarction 1
+132 Myocardial infarction 1
+133 Myocardial infarction 1
+134 Myocardial infarction 1
+135 Myocardial infarction 1
+136 Myocardial infarction 1
+137 Myocardial infarction 1
+138 Myocardial infarction 1
+139 Myocardial infarction 1
+140 Myocardial infarction 1
+141 Myocardial infarction 1
+142 Myocardial infarction 1
+143 Myocardial infarction 1
+144 Myocardial infarction 1
+145 Myocardial infarction 1
+146 Myocardial infarction 1
+147 Myocardial infarction 1
+148 Myocardial infarction 1
+149 Myocardial infarction 1
+150 Myocardial infarction 1
+151 Myocardial infarction 1
+152 Myocardial infarction 1
+153 Myocardial infarction 1
+154 Myocardial infarction 1
+155 Myocardial infarction 1
+156 Myocardial infarction 1
+157 Myocardial infarction 1
+158 Myocardial infarction 1
+159 Myocardial infarction 1
+160 Myocardial infarction 1
+161 Myocardial infarction 1
+162 Myocardial infarction 1
+163 Myocardial infarction 1
+164 Myocardial infarction 1
+165 Myocardial infarction 1
+166 Myocardial infarction 1
+167 Myocardial infarction 1
+168 Myocardial infarction 1
+169 Myocardial infarction 1
+170 Myocardial infarction 1
+171 Myocardial infarction 1
+172 Myocardial infarction 1
+173 Myocardial infarction 1
+174 Myocardial infarction 1
+175 Myocardial infarction 1
+176 Myocardial infarction 1
+177 Myocardial infarction 1
+178 Myocardial infarction 1
+179 Myocardial infarction 1
+180 Myocardial infarction 1
+181 Myocardial infarction 1
+182 Myocardial infarction 1
+183 Myocardial infarction 1
+185 Myocardial infarction 1
+187 Myocardial infarction 1
+188 Myocardial infarction 1
+197 Myocardial infarction 1
+202 Myocardial infarction 1
+203 Myocardial infarction 1
+207 Myocardial infarction 1
+215 Myocardial infarction 1
+216 Myocardial infarction 1
+217 Myocardial infarction 1
+218 Myocardial infarction 1
+219 Myocardial infarction 1
+220 Myocardial infarction 1
+221 Myocardial infarction 1
+222 Myocardial infarction 1
+223 Myocardial infarction 1
+224 Myocardial infarction 1
+225 Myocardial infarction 1
+226 Myocardial infarction 1
+227 Myocardial infarction 1
+228 Myocardial infarction 1
+229 Myocardial infarction 1
+230 Myocardial infarction 1
+231 Myocardial infarction 1
+232 Myocardial infarction 1
+233 Myocardial infarction 1
+234 Myocardial infarction 1
+235 Myocardial infarction 1
+236 Myocardial infarction 1
+237 Myocardial infarction 1
+238 Myocardial infarction 1
+239 Myocardial infarction 1
+240 Myocardial infarction 1
+241 Myocardial infarction 1
+242 Myocardial infarction 1
+243 Myocardial infarction 1
+244 Myocardial infarction 1
+245 Myocardial infarction 1
+246 Myocardial infarction 1
+247 Myocardial infarction 1
+248 Myocardial infarction 1
+249 Myocardial infarction 1
+250 Myocardial infarction 1
+251 Myocardial infarction 1
+252 Myocardial infarction 1
+253 Myocardial infarction 1
+254 Myocardial infarction 1
+255 Myocardial infarction 1
+256 Myocardial infarction 1
+257 Myocardial infarction 1
+258 Myocardial infarction 1
+259 Myocardial infarction 1
+260 Myocardial infarction 1
+261 Myocardial infarction 1
+262 Myocardial infarction 1
+263 Myocardial infarction 1
+264 Myocardial infarction 1
+265 Myocardial infarction 1
+266 Myocardial infarction 1
+267 Myocardial infarction 1
+268 Myocardial infarction 1
+269 Myocardial infarction 1
+270 Myocardial infarction 1
+271 Myocardial infarction 1
+272 Myocardial infarction 1
+273 Myocardial infarction 1
+274 Myocardial infarction 1
+275 Myocardial infarction 1
+276 Myocardial infarction 1
+277 Myocardial infarction 1
+278 Myocardial infarction 1
+279 Myocardial infarction 1
+280 Myocardial infarction 1
+281 Myocardial infarction 1
+282 Myocardial infarction 1
+283 Myocardial infarction 1
+284 Myocardial infarction 1
+285 Myocardial infarction 1
+286 Myocardial infarction 1
+287 Myocardial infarction 1
+288 Myocardial infarction 1
+289 Myocardial infarction 1
+290 Myocardial infarction 1
+291 Myocardial infarction 1
+292 Myocardial infarction 1
+293 Myocardial infarction 1
+294 Myocardial infarction 1
+295 Myocardial infarction 1
+296 Myocardial infarction 1
+297 Myocardial infarction 1
+298 Myocardial infarction 1
+299 Myocardial infarction 1
+300 Myocardial infarction 1
+301 Myocardial infarction 1
+302 Myocardial infarction 1
+303 Myocardial infarction 1
+304 Myocardial infarction 1
+305 Myocardial infarction 1
+306 Myocardial infarction 1
+307 Myocardial infarction 1
+308 Myocardial infarction 1
+309 Myocardial infarction 1
+310 Myocardial infarction 1
+311 Myocardial infarction 1
+314 Myocardial infarction 1
+316 Healthy control 0
+317 Healthy control 0
+318 others 2
+324 others 2
+325 others 2
+329 Healthy control 0
+330 Healthy control 0
+335 Healthy control 0
+336 Healthy control 0
+345 Healthy control 0
+346 others 2
+348 others 2
+349 others 2
+351 Myocardial infarction 1
+355 others 2
+359 others 2
+363 Healthy control 0
+364 others 2
+366 others 2
+369 Healthy control 0
+370 others 2
+381 Healthy control 0
+383 others 2
+384 others 2
+385 Healthy control 0
+386 Healthy control 0
+388 others 2
+391 Healthy control 0
+396 others 2
+399 Healthy control 0
+400 Healthy control 0
+401 Healthy control 0
+408 Healthy control 0
+409 Myocardial infarction 1
+413 others 2
+416 others 2
+425 Myocardial infarction 1
+428 others 2
+430 others 2
+431 others 2
+432 others 2
+433 others 2
+434 others 2
+441 others 2
+445 others 2
+447 others 2
+449 others 2
+450 others 2
+451 others 2
+452 others 2
+453 others 2
+454 others 2
+455 Myocardial infarction 1
+456 Myocardial infarction 1
+457 others 2
+458 others 2
+459 Myocardial infarction 1
+460 others 2
+461 others 2
+462 Healthy control 0
+463 Healthy control 0
+464 Myocardial infarction 1
+465 Myocardial infarction 1
+466 others 2
+469 Healthy control 0
+470 Healthy control 0
+471 Healthy control 0
+472 Healthy control 0
+473 Healthy control 0
+475 Healthy control 0
+476 Healthy control 0
+477 Healthy control 0
+478 Healthy control 0
+479 Healthy control 0
+480 Healthy control 0
+482 Healthy control 0
+483 Healthy control 0
+484 Healthy control 0
+485 Healthy control 0
+486 Healthy control 0
+494 Healthy control 0
+497 others 2
+498 others 2
+500 others 2
+503 Myocardial infarction 1
+506 others 2
+512 Myocardial infarction 1
+519 others 2
+524 others 2
+532 Myocardial infarction 1
+537 others 2
+538 Myocardial infarction 1
+540 others 2
+541 others 2
+544 Myocardial infarction 1
+545 Myocardial infarction 1

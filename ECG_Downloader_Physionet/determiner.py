@@ -1,7 +1,18 @@
-import re
-import urllib
-import mechanize 
-from bs4 import Beautif
+import mechanize
+
+oldpatientfile = open("patientlist.txt")
+patientlist = oldpatientfile.read()
+newpatientlist = patientlist.split("\n")
+
+oldpatientfile2 = open("patientlist2.txt")
+patientlist2 = oldpatientfile2.read()
+newpatientlist2 = patientlist2.split("\n")
+
+oldpatientfile3 = open("patientlist3.txt")
+patientlist3 = oldpatientfile3.read()
+newpatientlist3 = patientlist3.split("\n")
+
+# Open filelist 
 
 br = mechanize.Browser(factory=mechanize.RobustFactory()) # Use this because of bad html tags in the html...
 
@@ -18,31 +29,31 @@ br.addheaders = [('User-agent','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.
                  ('Accept-Language', 'en-US,en;q=0.8'),                     
                  ('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.3')]
 
-oldpatientfile = open("patientlist.txt")
-patientlist = oldpatientfile.read()
-newpatientlist = patientlist.split("\n")
+## Say that I am not a Robot 
 
-oldpatientfile2 = open("patientlist2.txt")
-patientlist2 = oldpatientfile2.read()
-newpatientlist2 = patientlist2.split("\n")
-
-oldpatientfile3 = open("patientlist3.txt")
-patientlist3 = oldpatientfile3.read()
-newpatientlist3 = patientlist3.split("\n")
+## Save to the text file 
+f = file('determine.txt','a+')
+f.truncate() # File Initialize
 
 i = 0
+key1 = 'Myocardial infarction'
+key2 = 'Healthy control'
 
-while i < len(newpatientlist2) :
+while i < len(newpatientlist2):
 	try:
-		url = "http://physionet.orghy/atm/ptbdb/"+ newpatientlist[i] + "/0/10/export/matlab/"+newpatientlist2[i] + "m.hea"
+		url = "http://physionet.org/atm/ptbdb/"+ newpatientlist[i] + "/0/10/export/matlab/"+newpatientlist2[i] + "m.hea"
 		htmltext = br.open(url).read()
-		soup = BeautifulSoup(htmltext)
-		if htmltext[0:9] != '<!DOCTYPE':
-			response = urllib.urlretrieve (url, newpatientlist3[i]+"_"+ newpatientlist2[i] +".mat")
-			print response
-			i += 1
-		else:
-			print url
-			i += 1
-	except:
+		Jiyeon1 = htmltext.find(key1)
+		Jiyeon2 = htmltext.find(key2)
+		f.write(str(i+1))
+		if Jiyeon1 != -1 :
+			f.write(' ' + key1 + ' ' + str(1) + '\n')
+		elif Jiyeon2 != -1 :
+			f.write(' ' + key2 + ' ' + str(0) + '\n')
+		else :
+			f.write(' ' + 'others' + ' ' + str(2) + '\n')
 		i += 1
+	except:
+		i = i+1
+
+f.close()
