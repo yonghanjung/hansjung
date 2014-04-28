@@ -47,13 +47,20 @@ while i < len(newpatientlist2):
 		Jiyeon2 = htmltext.find(key2)
 		f.write(str(i+1))
 		if Jiyeon1 != -1 :
-			f.write(' ' + key1 + ' ' + str(1) + '\n')
+			f.write('-' + newpatientlist[i] + '-'+  key1 + '-' + str(1) + '\n')
 		elif Jiyeon2 != -1 :
-			f.write(' ' + key2 + ' ' + str(0) + '\n')
+			f.write('-' + newpatientlist[i] + '-' + key2 + '-' + str(0) + '\n')
 		else :
-			f.write(' ' + 'others' + ' ' + str(2) + '\n')
+			f.write('-' + newpatientlist[i] + '-' + 'Other symtoms' + '-' + str(2) + '\n')
 		i += 1
 	except:
-		i = i+1
+		f.write(str(i+1))
+		if Jiyeon1 != -1 :
+			f.write('-' + newpatientlist[i] + '-'+  key1 + '-' + str(1) + '\n')
+		elif Jiyeon2 != -1 :
+			f.write('-' + newpatientlist[i] + '-' + key2 + '-' + str(0) + '\n')
+		else :
+			f.write('-' + newpatientlist[i] + '-' + 'Other symtoms' + '-' + str(2) + '\n')
+		i += 1
 
 f.close()
