@@ -24,21 +24,16 @@ def main():
 	('Accept-Language', 'en-US,en;q=0.8'),                     
 	('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.3')]
 
-	url = "type your url"
+	url = "http://www.phdcomics.com/comics/archive.php?comicid=1725"
 	soup = soupsoup(url)
 	box = []
-	for link in soup.find_all('img'):
+	for link in soup.find_all('img', id = "comic"):
 		a = link.get('src')
 		a = unicodedata.normalize('NFKD', a).encode('ascii','ignore')
 		box.append(a)
-	print box
-	for i in range(len(box)):
-		print box[i]
-		word = "uf.daum.net/image"
-		a = word in box[i]
-		print a 
-		if word in box[i] :
-			urllib.urlretrieve(box[i],str(i)+".jpg")
 
+	for down in range(len(box)):
+		urllib.urlretrieve(box[down], str(down)+".gif")
+	
 if __name__ == "__main__" :
 	main()
