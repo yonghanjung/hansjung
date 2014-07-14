@@ -24,7 +24,7 @@ def main():
 	('Accept-Language', 'en-US,en;q=0.8'),                     
 	('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.3')]
 
-	url = "http://nb69.net/bbs/cartoon.php?bo_table=wbbs01&wr_id=1347"
+	url = "type your url"
 	soup = soupsoup(url)
 	box = []
 	for link in soup.find_all('img'):
