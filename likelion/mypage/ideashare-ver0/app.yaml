@@ -14,5 +14,11 @@ handlers:
 - url: /font-awesome
   static_dir: font-awesome
 
+- url: /js
+  static_dir : js
+
+- url: /(.*\.(php|html))
+  script: \1
+
 - url: /.*
   script: index.html
