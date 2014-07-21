@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>RENDER_TEMPLATE</title>
+</head>
+<body>
+	<!--
+	<div> 
+		age : {{age}}
+	</div>
+
+    <div> 
+    	species : {{species}}
+    </div>
+
+    <div>
+    	friend :
+    	{% for each in friend %}
+    		<ul>
+    			<li> {{each}} </li>
+    		</ul/>
+    	{%endfor%}
+    </div> -->
+
+    <div>
+	    GET :
+	    <form action = "http://search.naver.com/search.naver"  method ="get" target ="_blank">
+	    	<input type ="text" name = 'query'>
+	    	<input type ="Submit" value = "Submit"> 
+	    </form>
+
+	    <form action = "http://search.daum.net/search"  method ="get" target ="_blank">
+	    	<input type ="text" name = 'q'>
+	    	<input type ="Submit" value = "Submit"> 
+	    </form>
+
+	    <form action = " http://www.google.com/search" method ="get" target ="_blank">
+	    	<input type ="text" name = 'q'>
+	    	<input type ="Submit" value = "Submit">
+	    </form>
+
+	    <form method = "get">
+	    	<input type = "text" name = 'text_get'>
+	    	<input type = "Submit" value = "Submit">
+	    </form>
+	    <a href="http://www.google.com/search?q= {{variable_get}}" target = "_blank">
+	    	GOOGLE RESULT
+	    </a>
+
+	    <a href="http://search.daum.net/search?q= {{variable_get}}" target = "_blank">
+	    	DAUM RESULT
+	    </a>
+
+	    <a href="http://search.naver.com/search.naver?query= {{variable_get}}" target = "_blank">
+	    	WOWO RESULT
+	    </a>
+
+    </div>
+
+    <!-- <div>
+    	POST : 
+    	<form action = "index" method = "post">
+    		<input type = "text" name = "text_post">
+    		<input type = "Submit" value = "Submit">
+    	</form>
+
+    	{{variable_post}}
+    </div> -->
+</body>
+</html>

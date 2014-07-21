@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>멋쟁이사자 아이디어 발표 - 정용한</title>
+	<meta name="author" content="Hans Jung" />
+	<meta name="description" content="PPT HTML" />
+	<meta name="Resource-type" content="Document" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Specific CSS declaration for this --> 
+	<style>
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 5em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+	.intro p{
+		color: #fff;
+	}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+	}
+
+	/* Fixed header and footer.
+	* --------------------------------------- */
+	#header, #footer{
+		position:fixed;
+		height: 50px;
+		display:block;
+		width: 100%;
+		background: #333;
+		z-index:9;
+		text-align:center;
+		color: #f2f2f2;
+		padding: 20px 0 0 0;
+	}
+
+	#header{
+		top:0px;
+	}
+	#footer{
+		bottom:0px;
+	}
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu {
+		bottom: 80px;
+	}
+	#infoMenu li a {
+		color: #fff;
+		z-index: 999;
+	}
+
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+		<![endif]-->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+		<script type="text/javascript" src="../vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="../jquery.fullPage.js"></script>
+		<script type="text/javascript" src="examples.js"></script>
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['firstPage', 'secondPage', '3rdPage'],
+				sectionsColor: ['#C63D0F', '#1BBC9B', '#f2f2f2'],
+				css3: true
+			});
+		});
+		</script>
+
+	</head>
+	<body>
+
+	<div id="header">
+		<div class="header-above">
+			<div class="container">
+				<div class="row">
+					<div id = "hometitle" class="col-md-8" style = "font-size : 20px; text-align : left">
+						<span>정용한, 멋쟁이사자 아이디어 발표</span>
+					</div>
+				
+					<div class="col-md-4" style = "text-align : right">
+						<ul id="menu">
+							<li data-menuanchor="firstPage"><a href="#firstPage"> 표지 </a></li>
+							<li data-menuanchor="secondPage"><a href="#secondPage"> 다이어트 일기 서비스 </a></li>
+							<li data-menuanchor="3rdPage"><a href="#3rdPage">감사합니다 </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class = "container">
+			<div class = "row">
+				<a id = "linklink" href="http://hansjung.com" class="btn btn-lg btn-outline" style = "margin-top : -20px">
+                    <i class="fa fa-home"></i> Visit My Blog 
+                </a>
+			</div>
+		</div>
+	</div>
+
+	<div id="fullpage">
+		<div class="section " id="section0">
+			<div class="intro">
+				<h1 id = "nowstart">멋쟁이사자 아이디어 두번째 발표</h1>
+				<p style = "font-size : 4em">  지금 시작합니다</p>
+			</div>
+		</div>
+
+		<div class="section" id="section1">
+			<div class = "container">
+				<div class = "row">
+					<div class="slide" id="slide1">
+						<div class="intro">
+							<h1>"다이어트 해보신 적 있으십니까? <br> 잘 되십니까? " </h1>
+							<br><br>
+							<div class = "container">
+								<div class = "row">
+									<div class = "col-md-3"> </div>
+									<div class = "col-md-3">
+										<span style = "font-size : 60px; text-align : center; font-color : #FFF"> YES? </span> 
+									</div>
+
+									<div class = "col-md-3">
+										<span style = "font-size : 60px; text-align : center; font-color : #FFF"> NO? </span> 
+									</div>
+									<div class = "col-md-3"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section" id="section1">
+			<div class = "container">
+				<div class = "row">
+					<div class="slide" id="slide1">
+						<div class="intro" style = "max-width :100%; max-height : 100%">
+							<span style = 'text-align : center; font-size : 60px; color : #fff' class  = "first"> 목표를 가장 잘 달성하는 비결은 <br> 체계적인 기록이라고 합니다</span> 
+							<span style = 'text-align : center; font-size : 60px; color : #fff' id = "next" class = "first"> . </span>
+							<img class = "pop1" id = "pop1-click" src = "img/diary.jpg" style = "width : 50%; height : 50%; display : none"> </img>
+							<br><br>
+							<span style = 'text-align : center; font-size : 60px; color : #fff; display : none' class = "pop1"> 그래서 우린 일기를 쓰죠 </span>
+						</div>
+						<div class = "row">
+							<span style = 'text-align : center; font-size : 60px; color : #fff; display: none' class  = "second"> '다이어트 일기를 쓰자!'  </span> 
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class = "slide" id = "slide3">
+				<div class = "container"> 
+					<div class = "row">
+						<span style = 'text-align : center; font-size : 60px; color : #fff;' class  = "third"> '제공하는 서비스가 있나?'  </span> 
+					</div>
+					<div class = "row">
+						<div class = "col-md-2"> </div>
+						<div id = "imglist" class = "col-md-8" style = " max-width : 100%; max-height : 100%; display: none">
+							<img id = "poppop1" class = "pop2-1" src = "img/naver.jpg" style = "width : 70%; height : 70%; "> </img>
+							<br><br>
+							<span style = 'text-align : center; font-size : 40px; color : #fff;' class  = "pop2-1"> 네이버 일기 : 칼로리 자동계산 제공!  </span>
+
+							<img id = "poppop2" class = "pop2-2" src = "img/app1.jpg" style = "width : 45%; height : 45%; display:none"> </img>
+							<br><br>
+							<span style = 'text-align : center; font-size : 40px; color : #fff; display : none' class  = "pop2-2"> 앱: 식단일기, 간편한 사용경험 제공  </span>
+
+							<img id = "poppop3" class = "pop2-3" src = "img/skinny.jpg" style = "width : 45%; height : 45%; display:none"> </img>
+
+							<img id = "poppop3" class = "pop2-3" src = "img/skinny2.jpg" style = "width : 45%; height : 45%; display:none"> </img>
+							<br><br>
+							<span style = 'text-align : center; font-size : 40px; color : #fff; display : none' class  = "pop2-3"> 앱: 날씬쟁이가 될거야, 게시판 제공에 차별점  </span>
+						</div>
+
+						<div class = "col-md-2"> </div>
+					</div>
+				</div> 
+			</div>
+
+			<div class = "slide" id = "slide4">
+				<div class = "container">
+					<div class = "row">
+						<span class = "pop3-1" style = 'text-align : center; font-size : 50px; color : #fff;'> 그간의 다이어트 경험으로, <br> 다이어트 일기의 가장 중요한 점은  </span> <span class = "pop3-1" style = 'text-align : center; font-size : 40px; color : #fff; display : none'>, </span>
+
+						<ul class = "pop3-2" style = 'text-align : center; font-size : 50px; color : #fff; display : none'>
+							<li> 1. 음식의 칼로리를 빨리 파악하는 것 </li> 
+							<li> 2. 다이어트 수기 + 게시판을 통한 의견교류 </li> 
+						</ul>
+
+						<span class = "pop3-3" style = 'text-align : center; font-size : 50px; color : #fff; display : none'> 네이버일기, 앱 '식단일기', 앱 '날씬쟁이가 될거야' <br>를 합치면 가장 좋겠다!  </span> 
+
+					</div>
+				</div>
+			</div>
+
+			<div class = "slide" id = "slide5">
+				<div class = "container">
+					<div class = "row" style = "max-width : 100%; max-height : 100%">
+						<span class = "pop4-1" id = "pop4-1-bye" style = 'text-align : center; font-size : 50px; color : #fff;'> 그러던 중, "자소설닷컴" 에서 아이디어를 얻었습니다.  </span> 
+						<img class = "pop4-1" style = "width : 70%; height : 70%" src = "img/jaso.jpg"> </img>
+
+						<span class = "pop4-2" id = "pop4-1-pop" style = 'text-align : center; font-size : 40px; color : #fff; display : none'> 일기형식의 UI + 일기작성에 도움이 되는 정보제공 + 게시판 추가의 용이  </span> 
+						<img class = "pop4-2" style = "width : 70%; height : 70%; display : none" src = "img/jaso.jpg"> </img>
+
+					</div>
+				</div>
+			</div>
+
+			<div class = "slide" id = "slide6">
+				<div class = "container">
+					<div class = "row">
+						<span class = "pop5-1" style = 'text-align : center; font-size : 50px; color : #fff;'> 사용성에 대한 우려...<br> '앱'보다 편하게 일상을 기록할 수 있을까?   </span> 
+
+						<span class = "pop5-2" style = 'text-align : center; font-size : 50px; color : #fff; display : none'> 여러분의 가감없는 의견을 들려주세요. </span> 
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section" id="section2">
+			<div class = "container	">
+				<div class = "intro">
+					<div class = "row">
+						<h1 style = "color : black "> 감사합니다. </h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
