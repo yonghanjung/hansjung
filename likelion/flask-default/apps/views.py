@@ -1,56 +1,42 @@
-from flask import render_template, Flask, request
+from flask import render_template, Flask, url_for, request
 from apps import app
 
-import urllib2
-from bs4 import BeautifulSoup
+from google.appengine.ext import db
 
 
-def crawler(url):
-    source = urllib2.urlopen(url).read()\
-        .decode('utf-8', 'ignore')
-    soup = BeautifulSoup(source)
-    return soup
-
+class Upload(db.Model):
+    blogtext = db.StringProperty(multiline=True)
+    photo = db.BlobProperty()
+    
 
 @app.route('/')
-@app.route('/index', methods=["GET", "POST"])
+@app.route('/index')
 def index():
-    return render_template("index.html")
+    return render_template('upload.html')
 
 
-@app.route('/crawl', methods=["GET", "POST"])
-def crawl():
-    dcurl = "http://gall.dcinside.com/board/lists/?id=" + \
-        request.form['id'] + "&page=" + request.form['page']
+@app.route('/upload', methods=['POST'])
+def upload_db():
+    post_data = request.form['blog']
+    photo_data = request.files['photo']
+    filestream = photo_data.read()
 
-    soup = crawler(dcurl)
+    upload_data = Upload()
+    upload_data.photo = db.Blob(filestream)
 
-    context = soup.findAll('td', attrs={'class': 't_subject'})
+    upload_data.put()
 
-    result = ""
+    url = url_for("show", key=upload_data.key())
 
-    for each in context:
-        if each.a.string:
-            result += each.a.string + "<br>"
+    return render_template("upload.html", texttext = post_data, url = url)
+    # Then gives this url with key to the upload.html
 
-    return result
+@app.route('/show/<key>', methods=['GET'])
+def show(key):
+    upload_data = db.get(key)
+    # We gives the 'key' to the showing function.
+    # Then the variable 'upload_data' points that filestream with 'key'
+    return app.response_class(upload_data.photo)
+    # return this data as the photo.
 
 
-    #age = 21
-    #species = "lion"
-    #friend = ["google", "teacher", "student"]
-
-    # return render_template("index.html", age=age, species=species,
-    # friend=friend)
-
-    # Declare variables in Python, and then transfer variables to the 'index.html' file
-    # We need a html syntax to make html file to communicate with Python file
-
-    # ========================================================================#
-    # In summary, we takes input in HTML.
-        # At first, we takes input as type of 'get'
-        # At second, we takes input as type of 'post'
-        # Then, in Python file, by the command of request.args['text_get'],
-        # we obtains 'get' variable, in same way, we obtain 'post' variable
-        # Then, as we knew at the very first, we again transfer the value we obtained in Python
-        # to the index.html

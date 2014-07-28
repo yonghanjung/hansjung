@@ -11,16 +11,16 @@ builtins:
 - remote_api: on
 
 handlers:
-#- url: /favicon.ico
-#  static_files: apps/static/images/favicon.ico
-#  upload: apps/static/images/favicon.ico
-#
-#- url: /robots.txt
-#  static_files: apps/static/robots.txt
-#  upload: apps/static/robots.txt
+- url: /favicon.ico
+  static_files: apps/static/images/favicon.ico
+  upload: apps/static/images/favicon.ico
 
-- url: /static
-  static_dir: apps/static
+- url: /robots.txt
+  static_files: apps/static/robots.txt
+  upload: apps/static/robots.txt
+
+- url: /static ## 
+  static_dir: apps/static 
 
 - url: .*
   script: apps.app
