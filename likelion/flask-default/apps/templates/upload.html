@@ -8,7 +8,7 @@
     <div class="container">
         <p>
         {% if comment %}
-        {{ comment }} 
+        {{ comment }}
         {% endif %}
         </p>
 
@@ -26,7 +26,6 @@
                 {% for items in all_list %}
                 <img src="show/{{ items.key() }}">
                 <p> {{items.text}} at {{items.timetext}} </p>
-                
                 {% endfor %}
             </div>
         </div>
