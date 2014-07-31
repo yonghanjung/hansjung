@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<html lang = "en">
+<head>
+	<title> Mini Tweeter </title>
+</head>
+
+<body>
+	
+    {% if photo_url %}
+    <p>Congratulations!!! image was successfully aploaded</p>
+    <img src="{{ photo_url }}"/>
+    <a href="{{ url_for("index") }}">Back</a>
+	
+	{%  else %}
+	<form method = "POST" action = "{{ url_for("upload") }}" enctype = "multipart/form-data">
+		<input name = "photo" type = "file" />
+		<input type = "submit" value = "submit" />
+	</form>
+	{%  endif %}
+</body>
+</html>

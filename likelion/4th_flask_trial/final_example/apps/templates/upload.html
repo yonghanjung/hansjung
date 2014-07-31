@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/screen.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/lightbox.css">
+
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+    <script src="static/js/lightbox.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p>
+        {% if comment %}
+        {{ comment }}
+        {% endif %}
+        </p>
+
+        <form action="{{ url_for("upload_db") }}" enctype="multipart/form-data" method="POST">
+            <input type="file" name="photo">
+            <input type="submit" value="submit">
+        </form>
+
+        <br><br>
+        
+        <div class="image-row">
+            <div class="image-set">
+
+                {% for items in all_list %}
+                <a class="example-image-link" href="show/{{ items.key() }}" data-lightbox="example-set"><img class="example-image" src="show/{{ items.key() }}" alt=""></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

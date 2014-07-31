@@ -1,4 +1,4 @@
-from flask import render_template, Flask, url_for, request
+from flask import render_template, Flask, url_for, request, flash
 from apps import app
 
 from google.appengine.ext import db
@@ -25,6 +25,7 @@ def upload_db():
     upload_data.photo = db.Blob(filestream)
 
     upload_data.put()
+    flash("Photo added")
 
     url = url_for("show", key=upload_data.key())
 
