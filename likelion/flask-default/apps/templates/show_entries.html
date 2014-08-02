@@ -15,7 +15,11 @@
             {% for entry in entries %}
             <div class = "well clearfix">
               <li><h2> {{entry['id']}}.  {{ entry['title'] }}</h2> </li>
-              <li> <a href = " {{ url_for ('like_entry', key = entry['id']) }}">  <i class = "glyphicon glyphicon-thumbs-up"> </i>  {{entry['likecount']}} 좋아요  </a>  </li>
+              <li> <i class = "glyphicon glyphicon-thumbs-up"> </i> {{entry['likecount']}} 명이 좋아합니다.  </li>
+
+              <li> <a href = " {{ url_for ('like_entry', key = entry['id']) }}">  좋아요   </a>
+
+              <a href = " {{ url_for ('dislike_entry', key = entry['id']) }}" style = "color : red">   싫어요  </a>  </li>
 
               <div class = "pull-right">
 

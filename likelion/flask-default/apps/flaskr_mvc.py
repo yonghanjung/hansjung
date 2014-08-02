@@ -41,6 +41,16 @@ def like_entry(key):  # File upload
 
     return redirect(url_for('show_entries'))
 
+@app.route('/dislike/<key>', methods=['GET'])
+def dislike_entry(key):  # File upload
+    data = dataStorage.select(key)
+    data['likecount'] -= 1
+    if data['likecount'] < 0:
+        data['likecount'] = 0
+    dataStorage.update(key, data)
+
+    return redirect(url_for('show_entries'))
+
 
 @app.route('/edit/<key>', methods=['GET'])
 def edit_showbox(key):
