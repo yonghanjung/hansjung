@@ -1,3 +1,10 @@
+"""
+settings.py
+
+Configuration for Flask app
+
+"""
+
 import os
 
 # from secret_keys import CSRF_SECRET_KEY, SESSION_KEY
@@ -13,4 +20,4 @@ class Config(object):
 class Production(Config):
     DEBUG = True
     # CSRF_ENABLED = True
-    ADMIN = "lla@lla.com"
+    ADMIN = "oh@oh.com"
