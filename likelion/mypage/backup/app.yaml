@@ -1,0 +1,24 @@
+application: ideashare-ver0
+version: 1
+runtime: php
+api_version: 1
+
+handlers:
+- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: \1
+  upload: (.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+- url: /css
+  static_dir: css
+
+- url: /font-awesome
+  static_dir: font-awesome
+
+- url: /js
+  static_dir : js
+
+- url: /(.*\.(php|html))
+  script: \1
+
+- url: /.*
+  script: index.html

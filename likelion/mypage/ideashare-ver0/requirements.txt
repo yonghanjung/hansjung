@@ -1,0 +1,9 @@
+# pip install --no-deps -t lib -r requirements.txt
+
+alembic
+sqlalchemy
+flask-sqlalchemy
+flask-migrate
+flask
+flask-script
+mako

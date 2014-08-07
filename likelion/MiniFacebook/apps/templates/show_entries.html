@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
+  <dl>
+    <dt>Img : 
+      <dd> <input type="file" name="photo"> 
+    <dt>Title:
+      <dd><input type="text" size=30 name="title">
+        <dt>Text:
+          <dd><textarea name="contents" rows=5 cols=40></textarea>
+            <dd><input type="submit" value="POST">
+            </dl>
+          </form>
+
+          <ul class="entries">
+
+           {% for entry in entries %}
+           
+
+            <div class = "well clearfix">
+              <li><h2> {{entry['id']}}.  {{ entry['title'] }}</h2> </li>
+              <li> <i class = "glyphicon glyphicon-thumbs-up"> </i> {{entry['likecount']}} 명이 좋아합니다.  </li>
+
+              <li> <a href = " {{ url_for ('like_entry', key = entry['id']) }}">  좋아요   </a>
+
+              <a href = " {{ url_for ('dislike_entry', key = entry['id']) }}" style = "color : red">   싫어요  </a>  </li>
+
+              <div class = "pull-right">
+
+                <a href = " {{ url_for ('del_entry', key = entry['id']) }} "  class = "btn btn-danger">  지워요  </a>
+
+                <a href = " {{ url_for('edit_showbox', key = entry['id']) }} " class = "btn btn-danger">  고쳐요   </a>
+
+                {% if  entry['check'] == 1 %}
+                <br><br>
+                <form action= " {{ url_for ('editing', key = entry['id']) }}" method="post" class="add-entry">
+                  <input type="text" size=30 name="edit_title" value = "{{ entry['title'] }}">
+                  <dt>Text:
+                    <dd><textarea  type = "text" name="edit_contents" rows=5 cols=40 ></textarea></dd>
+                      <dd><input type="submit" value="POST"></dd>
+                    </form>
+
+                      {% endif  %}
+
+
+                    </div> 
+
+
+
+                    <li>{{ entry['contents'] }}  </li>
+                  </div>
+                  {% else %}
+                  <li><em>Unbelievable.  No entries here so far</em>
+                    {% endfor %}
+                  </ul>
+                  {% endblock %}
+
