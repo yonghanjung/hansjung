@@ -15,6 +15,7 @@ def article_list():
 
 
 @app.route('/article/create/', methods=['GET', 'POST'])
+# URL값을 받아서 이 함수를 실행해야 하니까, 'GET'은 항상 들어간다
 def article_create():
     form = ArticleForm()
     if request.method == 'POST':
