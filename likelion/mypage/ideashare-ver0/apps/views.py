@@ -38,7 +38,7 @@ def article_create():
 @app.route('/article/detail/<int:id>', methods=['GET'])
 def article_detail(id):
     article = Article.query.get(id)
-    comment = Comment.query.order_by(desc(Comment.date_created)).all()
+    comment = Comment.query.order_by(desc(Comment.date_created)).filter_by(article_id = article.id)
     return render_template('article/detail.html', article=article, comments=comment)
 
 
@@ -78,7 +78,7 @@ def comment_create(article_id):
                 email=form.email.data,
                 content=form.content.data,
                 password=form.password.data,
-                #article=Article.query.get(article_id)
+                article_id=article_id
             )
 
             db.session.add(comment)

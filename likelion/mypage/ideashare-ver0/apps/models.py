@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 models
 
@@ -20,6 +22,21 @@ class Comment(db.Model):
     article_id = db.Column(db.Integer, db.ForeignKey('article.id'))
     artlcle = db.relationship('Article',
                               backref=db.backref('comments', cascade='all, delete-orphan', lazy='dynamic'))
+    # Bidirection relationship
+    '''
+    class User(Base):
+        __tablename__ = 'user'
+        id = Column(Integer, primary_key=True)
+        name = Column(String)
+
+        addresses = relationship("Address", backref="user")
+
+    class Address(Base):
+        __tablename__ = 'address'
+        id = Column(Integer, primary_key=True)
+        email = Column(String)
+        user_id = Column(Integer, ForeignKey('user.id'))
+    '''
     author = db.Column(db.String(255))
     email = db.Column(db.String(255))
     password = db.Column(db.String(255))
