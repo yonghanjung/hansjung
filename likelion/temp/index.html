@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+  <title>Pusher Test</title>
+  <script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+    // Pusher.log변수에다가 저 함수를 넣어준다. 
+    // JS에서 정의된 함수를 받은 변수다. 
+    // 저 함수가 실행할때마다 log에 함수가 어떻게 작용하는지 기록된다. 
+    $(document).ready(function() {
+
+        var pusher = new Pusher('8e6c48d3c76ca943e9ff');
+        // Connection to the Pusher Server 
+        var channel = pusher.subscribe('test_channel');
+        // Channel 은 Braodcast같은거. 같은 채널에 있는 사람들에게 방송을 하는 개념이다. 
+        // 인증키를 이용해서, 방을 달리해서 메시지를 전달 할 수 있다. 
+
+        channel.bind('event_msg', function(data) {
+          // my_event event occured, then alert executed. 
+          // alert(data.message);
+          $("#chatpanel").append("<div>" + data.name + " : " + data.msg + "</div>");
+        });
+
+        // P['채널명'].trigger('내 이벤트 이름')
+
+
+        $("#send").click(function() {
+          var name = $("#chat_name").val();
+          var msg = $("#chat_msg").val();
+          $.get("/send", {
+            name_data : name,
+            msg_data : msg
+          }, function(data) {});
+        });
+    }) 
+  </script>
+</head>
+
+<body>
+    <div id = "chatpanel"> </div>
+    <div id = "chatform"> 
+        <input type = "text" id = "chat_name" placeholder = "이름" />
+        <input type = "text" id = "chat_msg" placeholder = "할말" />
+        <input type = "button" id = "send" value = "보내기" /> 
+    </div>
+</body>
