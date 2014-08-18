@@ -19,6 +19,16 @@
                     <div class = "well well-sm">
                         <span class="badge">{{ loop.index }}</span> {{ comment.content }}
                         <span class = "float-right">
+                            <i class = "glyphicon glyphicon-thumbs-up"> </i> {{ comment.likecount }} 명이 좋아합니다.
+                            <a href = " {{ url_for ('comment_like', comment_id = comment.id) }} "  class = "btn btn-danger">  좋아요  </a>
+                            <a href = " {{ url_for ('comment_deletecheck', comment_id = comment.id) }} "  class = "btn btn-danger">  지워요  </a>
+                            {% if comment.commentcheck == 1 %}
+                                <span> HELLO </span>
+                               <form action= " {{ url_for ('comment_delete', comment_id = comment.id) }}" method="post">
+                               <input type="text" size=15 name="pswd">
+                               <input type="submit" value="POST">
+                                </form>
+                            {% endif  %}
                             <span class = "label label-primary"> {{ comment.author }}  </span>
                             <small>
                                 <a href="mailto: {{ comment.email }}">{{ comment.email }}</a><em>{{ comment.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</em>

@@ -7,6 +7,12 @@ models
 
 from apps import db
 
+class User(db.Model):
+    email = db.Column(db.String(255), primary_key = True)
+    password = db.Column(db.String(255))
+    name = db.Column(db.String(255))
+    join_date = db.Column(db.DateTime(), default = db.func.now())
+
 
 class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -42,5 +48,7 @@ class Comment(db.Model):
     password = db.Column(db.String(255))
     content = db.Column(db.Text())
     date_created = db.Column(db.DateTime(), default=db.func.now())
+    likecount = db.Column(db.Integer, default = 0, nullable = False)
+    commentcheck = db.Column(db.Integer, default = 0, nullable = False)
 
 

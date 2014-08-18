@@ -14,6 +14,15 @@
                     </p>
                 </div>
             {% endfor %}
+                <div id = "results"></div>
+                <div align="center" id = "morebtn">
+                    <button class = "load_more" id = "load_more_button">load More</button>
+                    <div class = "animation_image" style= "display : none">
+                        Loading...
+                    </div>
+                 </div>
+
+
         {% else %}
         <div class = "no-list">
             글이 존재하지 않습니다. 새로운 글을 등록해주십니다.

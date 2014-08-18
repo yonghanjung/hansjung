@@ -14,6 +14,13 @@
             {% endif %}>
                 <a href="{{ url_for('article_create') }}"> 글쓰기</a>
             </li>
+
+            <li {% if active_tab == 'user_join' %}
+                class="active"
+            {% endif %}>
+                <a href="{{ url_for('user_join') }}"> 회원가입 </a>
+            </li>
+
         </ul>
     </div>
 </nav>

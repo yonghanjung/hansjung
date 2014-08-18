@@ -14,6 +14,26 @@
             {% endif %}>
                 <a href="{{ url_for('article_create') }}"> 글쓰기</a>
             </li>
+            <li {% if active_tab == 'article_create' %}
+                class = "active"
+            {% endif %} >
+                <a href = "{{ url_for('user_join') }} "> 회원가입 </a>
+            </li>
+            <li {% if active_tab == 'user_join' %}
+                class = "active"
+            {% endif %} >
+                <a href = "{{ url_for('log_in') }} "> 로그인 </a>
+            </li>
+            <li {% if active_tab == 'log_in' %}
+                class = "active"
+            {% endif %} >
+                <a href = "{{ url_for('log_out') }} "> 로그아웃 </a>
+            </li>
+            <li {% if active_tab == 'chatting' %}
+                class = "active"
+            {% endif %} >
+                <a href = "{{ url_for('chatting') }} "> 채팅 </a>
+            </li>
         </ul>
     </div>
 </nav>
