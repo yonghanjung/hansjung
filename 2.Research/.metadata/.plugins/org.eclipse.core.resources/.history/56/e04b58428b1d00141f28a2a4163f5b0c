@@ -1,0 +1,280 @@
+package DrM_Peak;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.lang.Object;
+
+import com.google.common.collect.Lists;
+
+
+public class Wavelet {
+	List <Double> data;
+	double size ;
+	private List<Double> b;
+	private List<Double> x;
+	private List<Double> a;
+	private String typename;
+	private int par;
+	
+	public Wavelet(List<Double>data){
+		this.data = data;
+		size = data.size();
+	}
+	
+	List<Double> QMF(String typename, int par){
+		this.typename = typename;
+		this.par = par;
+		
+		if (typename.equals("db") && (par == 4)){
+			List<Double> QMF = Arrays.asList(0.482962913145000, 0.836516303738000, 0.224143868042000, -0.129409522551000);
+			return QMF;
+		}
+		else if (typename.equals("db") && (par == 6)){
+			List<Double> QMF = Arrays.asList(0.332670552950000, 0.806891509311000, 0.459877502118000, -0.135011020010000, -0.0854412738820000,
+                    0.0352262918820000);
+			return QMF;
+		}
+		else if (typename.equals("db") && (par == 8)){
+			List<Double> QMF = Arrays.asList(0.230377813309000, 0.714846570553000, 0.630880767930000, -0.0279837694170000, -0.187034811719000,
+                    0.0308413818360000, 0.0328830116670000, -0.0105974017850000);
+			return QMF;
+		}
+		else if (typename.equals("symmlet") && (par == 8)){
+			List<Double> QMF = Arrays.asList(0.00267279339300000, - 0.000428394300000000, - 0.0211456865280000, 0.00538638875400000,
+                    0.0694904659110000, - 0.0384935212630000, - 0.0734625087610000, 0.515398670374000, 1.09910663053700,
+                    0.680745347190000, - 0.0866536154060000, - 0.202648655286000, 0.0107586117510000,
+                    0.0448236230420000, - 0.000766690896000000, - 0.00478345851200000);
+			return QMF;
+		}
+		else return data;
+	}
+	
+	List<Double> Filter (List<Double> b, List<Double> a, List<Double> x){
+		this.b = b;
+		this.a = a;
+		this.x = x;
+		
+		double addval;
+		double subval;
+		//System.out.println(b);
+		//System.out.println(a);
+		//System.out.println(x);
+		
+		List<Double> y = new ArrayList<Double>();
+		
+		for(int xi = 0; xi < x.size(); xi++){
+			addval = 0.0;
+			subval = 0.0;
+			for (int bi = 0; bi < b.size(); bi++){
+				if (xi - bi >= 0){
+					addval += b.get(bi) * x.get(xi-bi);
+				}
+			}
+			for (int ai = 0; ai < a.size()-1; ai++){
+				if (xi - ai >= 0){
+					subval += a.get(ai) * y.get(xi-ai);
+				}
+			}
+			y.add((addval - subval) / a.get(0));
+		}
+		return y;
+	}
+	
+	List<Double>MirrorFilt(List<Double> x){
+		List<Double> y = new ArrayList<Double>();
+		List<Double> tempx = new ArrayList<Double>();
+		for (int i = 0; i < x.size(); i++){
+			tempx.add(x.get(i)+1);
+		}
+		for (int i = 0; i < tempx.size(); i++){
+			tempx.set(i,Math.pow(-1,tempx.get(i)));
+		}
+		for (int i = 0; i < tempx.size(); i++){
+			tempx.set(i,-1 * tempx.get(i));
+		}
+		
+		for (int i = 0; i < x.size(); i++){
+			y.add(-1 * tempx.get(i) * x.get(i));
+		}
+		return y;
+	}
+	
+	List<Double> lshift(List<Double>x){
+		List<Double> y = new ArrayList<Double>();
+		double x0 = x.get(0);
+		
+		for (int i = 1; i < x.size(); i++){
+			y.add(x.get(i));
+		}
+		y.add(x0);
+				
+		return y;
+	}
+	
+	List<Double> iconv(List<Double>f, List<Double>x){
+		List<Double> y = new ArrayList<Double>();
+		List<Double> z = new ArrayList<Double>();
+		List<Double> a = new ArrayList<Double>();
+		List<Double> xpadded = new ArrayList<Double>();
+		List<Double> ypadded = new ArrayList<Double>();
+		int n = x.size();
+		int p = f.size();
+		
+		if (p <= n){
+			for (int i = n-p; i < n; i++){
+				xpadded.add(x.get(i));
+			}
+			for (int i = 0; i < n; i++){
+				xpadded.add(x.get(i));
+			}
+		}
+		else{
+			for (int i = 0; i < p; i++){
+				z.add(0.0);
+			}
+			for (int i = 0; i < p; i++){
+				int imod = 1 + ((p * n - p + i - 1) % n);
+			    z.set(i,x.get(imod));
+			}
+			
+			for (int i = 0; i < z.size(); i++){
+				xpadded.add(z.get(i));
+			}
+			for (int i = 0; i < x.size(); i++){
+				xpadded.add(x.get(i));
+			}
+		}
+		a.add((double) 1);
+		ypadded = Filter(f,a,xpadded);
+		for (int i = p; i < n+p; i++){
+			y.add(ypadded.get(i));
+		}
+		return y;
+	}
+	
+	List<Double> aconv(List<Double>f, List<Double>x){
+		List<Double> y = new ArrayList<Double>();
+		List<Double> z = new ArrayList<Double>();
+		List<Double> a = new ArrayList<Double>();
+		List<Double> xpadded = new ArrayList<Double>();
+		List<Double> ypadded = new ArrayList<Double>();
+		List<Double> fflip = new ArrayList<Double>();
+		int n = x.size();
+		int p = f.size();
+		
+		if (p < n){
+			for (int i = 0; i < x.size(); i++){
+				xpadded.add(x.get(i));
+			}
+			for (int i = 0; i < p; i++){
+				xpadded.add(x.get(i));
+			}
+		}
+		else{
+			for (int i = 0; i < p; i++){
+				z.add(0.0);
+			}
+			for (int i = 0; i < p; i++){
+				int imod = 1+ (i % n); 
+				z.set(i, x.get(imod));
+			}
+			
+			for (int i = 0; i < x.size(); i++){
+				xpadded.add(x.get(i));
+			}
+			for (int i = 0; i < z.size(); i++){
+				xpadded.add(z.get(i));
+			}
+		}
+		fflip = Lists.reverse(f);
+		a.add(1.0);
+		ypadded = Filter(fflip,a,xpadded );
+		for (int i = p-1; i < n+p-1; i++){
+			y.add(ypadded.get(i));
+		}
+		return y;
+	}
+	
+	List<Double>DownDyadHi(List<Double>x, List<Double>qmf){
+		List<Double>d = iconv(MirrorFilt(qmf), lshift(x));
+		List<Double>newd = new ArrayList<Double>();
+		double endval = d.get(d.size()-1);
+		
+		for (int i = 0; i < d.size(); i += 2){
+			newd.add(d.get(i));
+		}
+		if (newd.get(newd.size()-1) == endval){
+			newd.remove(newd.size()-1);
+		}
+		return newd;
+	}
+	
+	List<Double>DownDyadLo(List<Double>x, List<Double>qmf){
+		List<Double>d = aconv(qmf, x);
+		List<Double>newd = new ArrayList<Double>();
+		double endval = d.get(d.size()-1);
+		
+		for (int i = 0; i < d.size(); i += 2){
+			newd.add(d.get(i));
+		}
+		if (newd.get(newd.size()-1) == endval){
+			newd.remove(newd.size()-1);
+		}
+		return newd;
+	}
+	
+	List<Integer>Dyad(int j){
+		List<Integer>y = new ArrayList<Integer>();
+		int startvar = (int) (Math.pow(2, j) + 1);
+		int endval = (int) Math.pow(2, j+1); 
+		for (int i = startvar; i <= endval; i++){
+			y.add(i);
+		}
+		return y;
+	}
+	
+	List<Double>FWT_PO(List<Double>x, int L, List<Double>qmf){
+		List<Double>wcoef = new ArrayList<Double>();
+		List<Double>alfa = new ArrayList<Double>();
+		List<Double>beta = new ArrayList<Double>();
+		List<Double>temp = new ArrayList<Double>();
+		List<Integer>dyadtemp = new ArrayList<Integer>();
+		
+		int n = x.size();
+		int J = (int) (Math.log(n)/Math.log(2));
+		for (int i = 0; i < n; i++){
+			wcoef.add(0.0);
+		}
+		
+		for (int j = J-1; j >= L; j--){
+			alfa = DownDyadHi(x,qmf);
+			temp.clear();
+			dyadtemp = Dyad(j);
+			for (int idx = 0; idx < dyadtemp.size(); idx++){
+				wcoef.set( dyadtemp.size() + idx, alfa.get(idx));
+			}
+			x = DownDyadLo(x,qmf);
+		}
+		for (int i = 0; i < Math.pow(2, L); i++){
+			wcoef.set(i, x.get(i));
+		}
+		return wcoef;
+	}
+	
+	List<Double> rshift(List<Double>x){
+		int n = x.size();
+		double endval = x.get(n-1);
+		List<Double>y = new ArrayList<Double>();
+		y.add(endval);
+		
+		for (int i = 0; i < n-1; i++){
+			y.add(x.get(i));
+		}
+		return y;
+	}
+	
+	
+	
+	
+}

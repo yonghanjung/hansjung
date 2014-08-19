@@ -1,0 +1,21 @@
+package DrM_Peak;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FFT {
+	int n, m;
+	List<Double>cos = new ArrayList<Double>();
+	List<Double>sin = new ArrayList<Double>();
+	List<Double>window = new ArrayList<Double>();
+	
+	public FFT(int n){
+		// n must be power of 2 
+		this.n = n;
+		this.m = (int)(Math.log(n) / Math.log(2));
+		
+		if(n != (1<<m)){
+			throw new RuntimeException("FFT length must be power of 2");
+		}
+	}
+}

@@ -1,0 +1,7 @@
+package DrM_Peak;
+
+public class FFT {
+	int n, m;
+	List<Double>cos = new ArrayList<Double>();
+	List<Double>sin = new ArrayList<Double>();
+}

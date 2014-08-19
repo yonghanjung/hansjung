@@ -1,0 +1,67 @@
+package DrM_Peak;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import jxl.read.biff.BiffException;
+
+public class Main {
+	public static void main(String[] args){
+		ReadExcel readexcel = new ReadExcel();
+		List<Double> values = new ArrayList<Double>();
+		File file = new File("Workbook1.xls");
+		
+		for(int colnum = 0; colnum < 6; colnum ++){
+			try {
+				values = readexcel.readread(file, colnum);
+			} catch (BiffException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	
+			PeakDetect detector = new PeakDetect();
+			Map<Integer, Double> result = detector.peak_detection(values);
+			System.out.print(colnum+1 + " (th) signal : ");
+			/*
+			for (Entry<Integer, Double> entry : result.entrySet()) {
+				System.out.print("(" + entry.getKey() + "," + entry.getValue() + ") ");
+			}
+			System.out.println();
+			*/
+			
+			HRVcompute hrv = new HRVcompute(result);
+			
+			/*
+			System.out.println("Temporal location is " + hrv.RRloc());
+			System.out.println("RR interval "+  hrv.RRinterval());
+			System.out.println("RR interval means are " +  hrv.RRmean());
+			System.out.println("RR interval stds are " +  hrv.RRstd());
+			System.out.println("RR interval RMS are " + hrv.RR_RMS());
+			
+			System.out.println("QMF : " + wave.QMF("symmlet", 8));
+			*/
+		}
+		System.out.println();
+		Wavelet wave = new Wavelet(values);
+		List <Double> b = Arrays.asList(1.0,2.0,3.0,4.0,5.0);
+		List <Double> a = Arrays.asList(1.0,2.0,3.0);
+		List <Double> x = Arrays.asList(1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0);
+		
+		// System.out.println(wave.Filter(b, a, x));
+		// System.out.println(wave.MirrorFilt(bb));
+		// System.out.println(wave.lshift(test1));
+		// System.out.println(wave.iconv(test2,test3));
+		// System.out.println(wave.aconv(test2,test3));
+		// System.out.println(wave.DownDyadHi(test3,test2));
+		// System.out.println(wave.DownDyadLo(test3,test2));
+		// System.out.println(wave.Dyad(5));
+		// System.out.println( (int) (Math.log(8192)/Math.log(2))  );
+		// System.out.println( wave.FWT_PO(x, 2, a) );
+	}
+}

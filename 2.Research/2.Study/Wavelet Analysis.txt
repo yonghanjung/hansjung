@@ -1,0 +1,19 @@
+nmrsignal = resample(EKG1, 2^14 , length(EKG1) ); 
+
+figure; plot(nmrsignal); title('Original Signal');
+
+L=5; qmf = MakeONFilter('Symmlet',8); wc = FWT_PO(nmrsignal,L,qmf);
+
+figure; plot(wc); title('How Wavelet Coefficients looks like')
+
+figure; PlotWaveCoeff(wc,L,0); title('Wavelet Coefficients at each scales'); 
+for sc = L+1:14,
+    wc1(dyad(sc-1))=0; 
+end; 
+
+baseline = IWT_PO(wc1,L,qmf);
+figure;plot(baseline); title('Approximated version');
+
+
+[xh,wcoef] = WaveShrink(nmrsignal,'Visu',5,qmf);
+
