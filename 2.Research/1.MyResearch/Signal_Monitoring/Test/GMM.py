@@ -115,6 +115,7 @@ def main():
 
         return my_HEtraining, my_HEtest, my_MItraining, my_MItest
 
+    # Linear PCA
     def reducing_dim():
         my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
         from sklearn.decomposition import PCA as sklearnPCA
@@ -125,16 +126,24 @@ def main():
 
         return sklearn_HE_fit, sklearn_MI_fit
 
+    def try_kpca():
+        my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
+        from sklearn.decomposition import PCA, KernelPCA
+        kpca = KernelPCA(kernel= 'poly', fit_inverse_transform= True, degree=2)
+        HE_kpca = kpca.fit_transform(my_HEtraining)
+        MI_kpca = kpca.fit_transform(my_MItraining)
 
-    A,B = reducing_dim()
+        return HE_kpca, MI_kpca
+
+
+    A,B = try_kpca()
+    #A,B = reducing_dim()
 
     for idx in range(len(A)):
         plt.plot(A[idx][0], A[idx][1],'ro')
     for idx in range(len(B)):
         plt.plot(B[idx][0], B[idx][1],'bo')
     plt.show()
-
-    print A
 
 if __name__ == "__main__":
     main()

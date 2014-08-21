@@ -1,105 +1,203 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'jeong-yonghan'
-
 '''
-Code for detecting peaks
+그래프 짜는거 새로짜기
 '''
 
-import matplotlib.pyplot as plt
-
-
-class peak_detect(object):
-    def __init__(self, mysignal, start, slope):
-        self.mysignal = mysignal
-        self.start = start
-        self.slope = slope
-        self.length = len(mysignal)
-        self.where_cross = {}
-        self.mynewthr = []
-        self.my_peak = {}
-        self.mymode = ""
-        self.my_thr = []
-        self.new_start = self.start
-
-
-    def thr_line(self):
-        for idx in range(self.length):
-            self.my_thr.append(self.start + idx * self.slope)
-        return self.my_thr
-
-
-    def peak_detect(self):
-        self.mythr = self.thr_line()
-        def check_cross(thr_prev, thr_now, sig_prev, sig_now):
-            if thr_prev > sig_prev:
-                if thr_now <= sig_now:
-                    return True
-                else:
-                    return False
-            else:
+def adaptive_thr(data, initial_info):
+    def check_cross(prev_thr, prev_sig, cur_thr, cur_sig):
+        if prev_thr > prev_sig:
+            if cur_thr < cur_sig:
+                return True
+                # 크로스포인트는 과거와 현재 사이에 찍힌다.
+                # 즉, 현재포인트부터 신호를 받는게 좋다.
+            else: # cur_thr > cur_sig
                 return False
-        self.check_cross = check_cross
-        # Initializing
-        it_count = 0
-        self.it_count = it_count
-        prev_thr = 0
-        prev_sig = 0
-        self.prev_thr = prev_thr
-        self.prev_sig = prev_sig
+        else:
+            return False
 
-        # Picking up the cross point
-        for thr_it, sig_it in zip(self.mythr, self.mysignal):
-            cur_thr = thr_it
-            cur_sig = sig_it
+    mymax = {}
+    mysignal = data
+    slope = initial_info[1]
+    start = initial_info[0]
+    adap = [start]
+    mode = 'thr'
+    cross = False
+    x = 1
 
-            if self.check_cross(self.prev_thr, cur_thr, self.prev_sig, cur_sig):
-                self.where_cross.update({self.it_count: cur_thr})
-                self.mymode = 'sig'
+    for idx in range(len(mysignal)):
+        # 모드 : sig, thr
+            # thr 모드 : 직선을 타고 내려간다.
+            # sig 모드 : 신호를 타고 올라간다.
 
-            if self.mymode == "sig":
-                if cur_sig > self.prev_sig:
-                    self.mynewthr.append(cur_sig)
-                else:
-                    self.mymode = "thr"
-                    self.start = cur_sig
-                    self.new_start = self.start
-                    self.mynewthr.append(self.start + self.it_count * self.slope)
-                    self.my_peak.update({self.it_count: self.prev_sig})
-            else:
-                if len(self.my_peak.keys())-1 >= 0:
-                    self.mynewthr.append( self.my_peak[ self.my_peak.keys()[len(self.my_peak.keys())-1]] + self.it_count * self.slope)
-                    print self.my_peak
-                else :
-                    self.mynewthr.append(self.new_start + self.it_count * self.slope)
-            self.prev_thr = cur_thr
-            self.prev_sig = cur_sig
-            self.it_count += 1
-        return self.mynewthr, self.my_peak
+        # 알고리즘
+            # 시작은 thr모드
+                # 기울기0, 스타트0 으로 직선을 그린다.
+                # 교차인지 확인
+                    # 만일 교차가 아니라면 계속 thr모드로 진행
+                    # 교차면 sig모드 변환
+                    # 다음 iteration
+            # sig모드이면
+                # increasing 이면 타고 올라간다.
+                # decreasing 이면 thr 모드 변환
+                    # 현재의 신호 포인트를 맥스로 저장
+                    # slope은 그대로
+                    # start는 맥스
+                    # 새로운 x를 잡아서 진행한다.
+                # 다음 iteration
 
+        # MODE CHECK
+        if idx > 0:
+            prev_thr = adap[len(adap)-2]
+            cur_thr = adap[len(adap)-1]
+            prev_sig = mysignal[idx-1]
+            cur_sig = mysignal[idx]
+            cross = check_cross(prev_thr,prev_sig,cur_thr,cur_sig)
+        else:
+            pass
+
+        if mode == 'thr':
+            if cross == False:
+                mode = 'thr'
+                adap.append(start + x * slope)
+                x += 1
+
+            elif cross == True:
+                mode = 'sig'
+                adap.append(cur_sig )
+                continue
+
+        elif mode == 'sig':
+            if cur_sig > prev_sig:
+                adap.append(cur_sig)
+            if cur_sig < prev_sig:
+                adap.append(cur_sig)
+                mode = 'thr'
+                mymax.update( {idx : prev_sig}  )
+                start = prev_sig
+                x = 0
+                continue
+    return [adap, mymax]
 
 
 def main():
-    # Call My Data
-    from data_call import data_call
+    def mydata():
+        from data_call import data_call
+        testnum = 6
+        mysignal = data_call("ECG_HE", testnum, 0)
+        return testnum, mysignal
 
-    mysignal = data_call("PPG_KW", 1, 0)
+    def check_cross(prev_thr, prev_sig, cur_thr, cur_sig):
+        if prev_thr > prev_sig:
+            if cur_thr < cur_sig:
+                return True
+                # 크로스포인트는 과거와 현재 사이에 찍힌다.
+                # 즉, 현재포인트부터 신호를 받는게 좋다.
+            else: # cur_thr > cur_sig
+                return False
+        else:
+            return False
 
-    # Setting for Threshold #
-    start = 150
-    slope = -0.1
 
-    # Start Algorithm #
-    mypeak = peak_detect(mysignal, start, slope)
-    mynewthr, my_peak = mypeak.peak_detect()
+    def adaptive_thr():
+        import numpy as np
+        testnum, mysignal = mydata()
+        mymax = {}
 
-    for key in sorted(my_peak):
-        plt.plot(key, my_peak[key],'ro')
+        # 우리가 가진 수식들.
+        Vold = 0 # V{n-1}
+        Vnew = 0 # V{n}
+        Fs = 75  # Sampling Frequency
+        StdPPG = np.std(mysignal)
+        slope_old = 0
+        slope_new = 0
 
-    plt.plot(mysignal)
-    plt.plot(mynewthr)
 
-    plt.show()
+        slope = -0.75
+        start = 100
+        adap = [start]
+        mode = 'thr'
+        cross = False
+        x = 1
+
+        for idx in range(len(mysignal)):
+            # 모드 : sig, thr
+                # thr 모드 : 직선을 타고 내려간다.
+                # sig 모드 : 신호를 타고 올라간다.
+
+            # 알고리즘
+                # 시작은 thr모드
+                    # 기울기0, 스타트0 으로 직선을 그린다.
+                    # 교차인지 확인
+                        # 만일 교차가 아니라면 계속 thr모드로 진행
+                        # 교차면 sig모드 변환
+                        # 다음 iteration
+                # sig모드이면
+                    # increasing 이면 타고 올라간다.
+                    # decreasing 이면 thr 모드 변환
+                        # 현재의 신호 포인트를 맥스로 저장
+                        # slope은 그대로
+                        # start는 맥스
+                        # 새로운 x를 잡아서 진행한다.
+                    # 다음 iteration
+
+            # MODE CHECK
+            if idx > 0:
+                prev_thr = adap[len(adap)-2]
+                cur_thr = adap[len(adap)-1]
+                prev_sig = mysignal[idx-1]
+                cur_sig = mysignal[idx]
+                cross = check_cross(prev_thr,prev_sig,cur_thr,cur_sig)
+            else:
+                pass
+
+            if mode == 'thr':
+                if cross == False:
+                    mode = 'thr'
+                    adap.append(start + x * slope)
+                    x += 1
+
+                elif cross == True:
+                    mode = 'sig'
+                    adap.append(cur_sig )
+                    continue
+
+            elif mode == 'sig':
+                if cur_sig > prev_sig:
+                    adap.append(cur_sig)
+                if cur_sig < prev_sig:
+                    adap.append(cur_sig)
+                    mode = 'thr'
+                    mymax.update( {idx : prev_sig}  )
+                    start = prev_sig
+                    x = 0
+                    continue
+        return adap, mymax
+
+    def plotting():
+        import matplotlib.pyplot as plt
+
+        adap, mymax = adaptive_thr()
+        testnum, mysignal = mydata()
+
+        #for key in sorted(mymax):
+        #    plt.plot(key, mymax[key],'ro')
+
+
+        plt.plot(mysignal)
+        #plt.plot(adap)
+        plt.xlabel("X index (1 data point every 1/75 sec.)")
+        plt.ylabel("Scale modified Voltage value")
+        plt.title("#" + str(testnum) + " Samples from Kiwook")
+
+        plt.show()
+
+
+    plotting()
+
+
+
+
 
 
 if __name__ == "__main__":
