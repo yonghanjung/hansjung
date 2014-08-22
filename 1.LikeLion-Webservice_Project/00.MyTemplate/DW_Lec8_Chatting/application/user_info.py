@@ -1,0 +1,6 @@
+#ADMIN_EMAIL = yhansjung@gmail.com
+#ADMIN_DB_URI =
+
+PUSHER_APP_ID = '85904'
+PUSHER_KEY = '8e6c48d3c76ca943e9ff'
+PUSHER_SECRET = '8d935d4bfe76c6d21594'

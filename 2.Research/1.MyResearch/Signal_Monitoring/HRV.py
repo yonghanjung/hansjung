@@ -14,12 +14,10 @@ def main():
     def RR_loc():
         from data_call import data_call
 
-        mysignal = data_call("PPG_KW", 1, 0)
+        mysignal = data_call("PPG_KW", 6, 0)
 
-        from peak_detect import adaptive_thr
-
-        initial_info = [100, -0.75]
-        A = adaptive_thr(data=mysignal, initial_info=initial_info)
+        from adaptive_peak_module import adaptive_thr
+        A = adaptive_thr(data=mysignal)
         peak_data = A[1]  # {Peak loc : Peak info}
         temp_peak = {}
         for x, y in enumerate(peak_data):
@@ -57,7 +55,10 @@ def main():
         splited_RR_interval = chunks(RR_interval,howmany)
         myRMSNN = []
         for x in splited_RR_interval:
-            myRMSNN.append(np.RMS)
+            myRMSNN.append(np.RMS(x))
+        return myRMSNN
+
+
 
 
 if __name__ == "__main__":
