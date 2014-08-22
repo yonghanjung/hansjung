@@ -135,9 +135,17 @@ def main():
 
         return HE_kpca, MI_kpca
 
+    def try_svm():
+        my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
+        HE_kpca, MI_kpca = try_kpca()
+
+        from sklearn import svm
+        
 
     A,B = try_kpca()
     #A,B = reducing_dim()
+
+
 
     for idx in range(len(A)):
         plt.plot(A[idx][0], A[idx][1],'ro')

@@ -51,6 +51,17 @@ def data_call(data_name, data_num, wanted_length):
                 mysignal = mysignal[:wanted_length]
             return mysignal
 
+    if data_name == "PPG_KW_long":
+        file = open("Data/" + str(data_num) + ".txt",'r')
+        mydata = file.read().split(' ')
+        mydata = filter(lambda x: len(x)>0, mydata)
+        mydata = [int(x) for x in mydata]
+        if wanted_length == 0:
+            pass
+        else :
+            mydata = mydata[:wanted_length]
+        return mydata
+
     if data_name == "ECG_HE":
         mysignal = scipy.io.loadmat("Data/ECG_HE.mat")
         mysignal = mysignal['ECG_HE']

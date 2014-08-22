@@ -90,4 +90,4 @@ def adaptive_thr(data):
                 mymax.update({idx: prev_sig})
                 Vpeak = prev_sig
                 continue
-    return adap, mymax
+    return [adap, mymax]

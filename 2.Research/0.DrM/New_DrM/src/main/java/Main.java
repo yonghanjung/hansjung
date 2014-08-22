@@ -33,5 +33,14 @@ public class Main {
         statistics mystat = new statistics(testlist);
         System.out.println(mystat.getRMS());
 
+        System.out.println("50ms 넘는 인터벌 비율");
+        System.out.println(hrv.pNN50(RR_time_interval));
+
+        System.out.println("SD1");
+        System.out.println(hrv.PoinPlot_sd1(RR_time_interval,2));
+
+        System.out.println("SD2");
+        System.out.println(hrv.PoinPlot_sd2(RR_time_interval,2));
+
     }
 }
