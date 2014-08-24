@@ -88,12 +88,6 @@ class JoinForm(Form):
         description={'placeholder' : u'이름을 입력하세요'}
     )
 
-    secret = StringField(
-        u'비밀코드',
-        [validators.data_required(u'비밀코드를 입력하시기 바랍니다.')],
-        description={'placeholder' : u'비밀코드를 입력하세요'}
-    )
-
 
 class LoginForm(Form):
     email = EmailField(

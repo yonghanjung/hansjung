@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
+
 __author__ = 'jeong-yonghan'
 
 
 def main():
     import numpy as np
     import matplotlib.pyplot as plt
+    from compiler.ast import flatten
+
     '''
     알고리즘
         # 레벨0 : 8192 = 2^13
@@ -107,10 +110,19 @@ def main():
 
     def training_test():
         _, my_HEmat, _, my_MImat = build_matrix()
-        my_HEtraining = my_HEmat[:24]
+        #my_HEtraining = my_HEmat[:25]
+        my_HEtraining = my_HEmat
+        #my_HEtraining = flatten(my_HEtraining)
+        #HEmax = max(my_HEtraining)
+        #normalnum = 100
+        #my_HEtraining = [x/normalnum for x in my_HEtraining]
         my_HEtest = my_HEmat[25:]
 
-        my_MItraining = my_MImat[:69]
+        #my_MItraining = my_MImat[:70]
+        my_MItraining = my_MImat
+        #my_MItraining = flatten(my_MItraining)
+        #MImax = max(my_MItraining)
+        #my_MItraining = [x / normalnum for x in my_MItraining]
         my_MItest = my_MImat[70:]
 
         return my_HEtraining, my_HEtest, my_MItraining, my_MItest
@@ -129,7 +141,7 @@ def main():
     def try_kpca():
         my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
         from sklearn.decomposition import PCA, KernelPCA
-        kpca = KernelPCA(kernel= 'poly', fit_inverse_transform= True, degree=2)
+        kpca = KernelPCA(kernel= 'poly', fit_inverse_transform= True, degree=3)
         HE_kpca = kpca.fit_transform(my_HEtraining)
         MI_kpca = kpca.fit_transform(my_MItraining)
 
@@ -139,12 +151,11 @@ def main():
         my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
         HE_kpca, MI_kpca = try_kpca()
 
-        from sklearn import svm
-        
+
+
+
 
     A,B = try_kpca()
-    #A,B = reducing_dim()
-
 
 
     for idx in range(len(A)):

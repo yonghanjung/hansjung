@@ -6,7 +6,7 @@ from flask.ext.sqlalchemy import db
 
 
 model = Model(
-    field1 = value1
+    field1 = value1,
     field2 = value2
 )
 

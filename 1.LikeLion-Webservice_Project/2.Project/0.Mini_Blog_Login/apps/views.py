@@ -174,21 +174,17 @@ def user_join():
     form = JoinForm()
 
     if request.method == 'POST':
-        if form.validate_on_submit():
-            if form.secret.data == 'duzi':
-                user = User(
-                    email=form.email.data,
-                    password=generate_password_hash(form.password.data),
-                    name=form.name.data
-                )
+        user = User(
+            email=form.email.data,
+            password=generate_password_hash(form.password.data),
+            name=form.name.data
+        )
 
-                db.session.add(user)
-                db.session.commit()
+        db.session.add(user)
+        db.session.commit()
 
-                flash(u'가입이 승인되었습니다. 비밀번호는 암호화되어 저장되어 관리자도 알 수 없습니다.', 'success')
-                return redirect(url_for('article_list'))
-            else:
-                flash(u'비밀코드가 맞지 않습니다. 관리자에게 문의하세요.','danger')
+        flash(u'가입이 승인되었습니다. 비밀번호는 암호화되어 저장되어 관리자도 알 수 없습니다.', 'success')
+        return redirect(url_for('article_list'))
 
     return render_template('user/join.html', form=form, active_tab='user_join')
 
