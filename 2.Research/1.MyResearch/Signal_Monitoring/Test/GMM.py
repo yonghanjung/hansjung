@@ -5,10 +5,6 @@ __author__ = 'jeong-yonghan'
 
 
 def main():
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from compiler.ast import flatten
-
     '''
     알고리즘
         # 레벨0 : 8192 = 2^13
@@ -26,6 +22,11 @@ def main():
     결론
         L = 7 (Decomposition Level 6) 일 때, 128 ~ 256번째 포인트들이 핵심 Feature
     '''
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from compiler.ast import flatten
+
 
     # # GENERATE FEATURES
     # Extract the best WC
@@ -74,7 +75,8 @@ def main():
     def read_csv():
         import csv
 
-        myHE = {}; myMI = {}
+        myHE = {};
+        myMI = {}
         with open('HE.csv', 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
@@ -82,7 +84,7 @@ def main():
                 row.pop(0)
                 myHE.update({first: row})
 
-        with open('MI.csv','rb') as f:
+        with open('MI.csv', 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
                 first = row[0]
@@ -92,8 +94,10 @@ def main():
 
     def build_matrix():
         myHE, myMI = read_csv()
-        my_HEmat = []; my_HEkey = []
-        my_MImat = []; my_MIkey = []
+        my_HEmat = [];
+        my_HEkey = []
+        my_MImat = [];
+        my_MIkey = []
         for idx, key in enumerate(myHE):
             test = myHE[key]
             test = [float(x) for x in test]
@@ -108,61 +112,143 @@ def main():
 
         return my_HEkey, my_HEmat, my_MIkey, my_MImat
 
-    def training_test():
+    # --------------------------------------------------------------------------------------------------#
+    # 여기까지는 그냥 데이터 읽어오는 거라서 NEVER Touch #
+
+    def training_test(numHEtrain, numMItrain):
+        '''
+        INPUT
+            - Health Condition: 37(records) * 128(wc) 중에 몇 개를 Training 으로 쓸 것인가.
+            - MI Condition : 208 (records) * 128(wc) 중에 몇 개를 Test 로 쓸 것인가.
+
+        OUTPUT
+            - 1. HE list of list : numHEtrain * 128 (wc)
+            - 2. MI list of list : numMItrain * 128 (wc)
+            - 3. HE list of list : (37 - numHEtrain) * 128 (wc)
+            - 4. MI list of list : (208 - numMItrain) * 128
+        '''
+
         _, my_HEmat, _, my_MImat = build_matrix()
-        #my_HEtraining = my_HEmat[:25]
-        my_HEtraining = my_HEmat
-        #my_HEtraining = flatten(my_HEtraining)
-        #HEmax = max(my_HEtraining)
-        #normalnum = 100
-        #my_HEtraining = [x/normalnum for x in my_HEtraining]
-        my_HEtest = my_HEmat[25:]
+        my_HEtraining = my_HEmat[:numHEtrain]
+        my_HEtest = my_HEmat[numHEtrain:]
 
-        #my_MItraining = my_MImat[:70]
-        my_MItraining = my_MImat
-        #my_MItraining = flatten(my_MItraining)
-        #MImax = max(my_MItraining)
-        #my_MItraining = [x / normalnum for x in my_MItraining]
-        my_MItest = my_MImat[70:]
+        my_MItraining = my_MImat[:numMItrain]
+        my_MItest = my_MImat[numMItrain:]
 
-        return my_HEtraining, my_HEtest, my_MItraining, my_MItest
+        return [my_HEtraining, my_MItraining, my_HEtest, my_MItest]
+
 
     # Linear PCA
-    def reducing_dim():
-        my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
+    def reducing_dim(numdim):
+        '''
+        개요
+            - PCA: EIG value 순서대로 Linear Transform을 하여 그 순서대로 sorting
+
+        INPUT
+            - numdim : Dimension
+
+        OUTPUT
+            - 1. sklearn_HE_train_fit : numdim * numHEtrain
+            - 2. sklearn_MI_train_fit : numdim * numMItrain
+            - 3. sklearn_HE_test_fit : numdim * numHEtest
+            - 4. sklearn_MI_test_fit : numdim * numMItest
+        '''
+
+        MyDataSet = training_test(25, 150)
+        my_HEtraining = MyDataSet[0]
+        my_MItraining = MyDataSet[1]
+        my_HEtest = MyDataSet[2]
+        my_MItest = MyDataSet[3]
+
         from sklearn.decomposition import PCA as sklearnPCA
-        sklearn_pca = sklearnPCA(n_components=2)
 
-        sklearn_HE_fit = sklearn_pca.fit_transform(my_HEtraining)
-        sklearn_MI_fit = sklearn_pca.fit_transform(my_MItraining)
+        sklearn_pca = sklearnPCA(n_components=numdim)
 
-        return sklearn_HE_fit, sklearn_MI_fit
+        sklearn_HE_train_fit = sklearn_pca.fit_transform(my_HEtraining)
+        sklearn_MI_train_fit = sklearn_pca.fit_transform(my_MItraining)
+        sklearn_HE_test_fit = sklearn_pca.fit_transform(my_HEtest)
+        sklearn_MI_test_fit = sklearn_pca.fit_transform(my_MItest)
 
-    def try_kpca():
-        my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
+        return [sklearn_HE_train_fit, sklearn_MI_train_fit, sklearn_HE_test_fit, sklearn_MI_test_fit]
+
+    def try_kpca(kernel, invTran, degree):
+        '''
+        개요
+            - Kernel PCA 을 적용한다.
+        '''
+
+        MyDataSet = training_test(24, 150)
+        my_HEtraining = MyDataSet[0]
+        my_MItraining = MyDataSet[1]
+        my_HEtest = MyDataSet[2]
+        my_MItest = MyDataSet[3]
+
         from sklearn.decomposition import PCA, KernelPCA
-        kpca = KernelPCA(kernel= 'poly', fit_inverse_transform= True, degree=3)
-        HE_kpca = kpca.fit_transform(my_HEtraining)
-        MI_kpca = kpca.fit_transform(my_MItraining)
 
-        return HE_kpca, MI_kpca
+        kpca = KernelPCA(kernel=kernel, fit_inverse_transform=invTran, degree=degree)
+        HE_training_kpca = kpca.fit_transform(my_HEtraining)
+        MI_training_kpca = kpca.fit_transform(my_MItraining)
+        HE_test_kpca = kpca.fit_transform(my_HEtest)
+        MI_test_kpca = kpca.fit_transform(my_MItest)
 
-    def try_svm():
-        my_HEtraining, my_HEtest, my_MItraining, my_MItest = training_test()
-        HE_kpca, MI_kpca = try_kpca()
+        return [HE_training_kpca, MI_training_kpca, HE_test_kpca, MI_test_kpca]
+
+    A = try_kpca('poly', True, 3)
+    HE_train_kpca = A[0]
+    MI_train_kpca = A[1]
+    HE_test_kpca = A[2]
+    MI_test_kpca = A[3]
+
+    HE_train_2dim = []
+    for HE_train in HE_train_kpca:
+        HE_train_2dim.append([HE_train[0], HE_train[1]])
+
+    MI_train_2dim = []
+    for MI_train in MI_train_kpca:
+        MI_train_2dim.append([MI_train[0], MI_train[1]])
+
+    HE_test_2dim = []
+    for HE_test in HE_test_kpca:
+        HE_test_2dim.append([HE_test[0], HE_test[1]])
+
+    MI_test_2dim = []
+    for MI_test in MI_test_kpca:
+        MI_test_2dim.append([MI_test[0], MI_test[1]])
+
+    Test_2dim = HE_test_2dim + MI_test_2dim
+
+    Train_2dim = HE_train_2dim + MI_train_2dim
+    Training_class = [0] * 24 + [1] * 150
+    Test_class = [0] * 13 + [1] * 58
+    print "ho1"
+    from sklearn import svm
+
+    clf = svm.SVC(kernel = 'linear')
+    print "ho2"
+    clf.fit(Train_2dim, Training_class)
+    print "ho3"
+    w = clf.coef_[0]
+    a = -w[0] / w[1]
+    xx = np.linspace(-10000, 10000)
+    yy = a * xx - (clf.intercept_[0]) / w[1]
+    b = clf.support_vectors_[0]
+    yy_down = a * xx + (b[1] - a * b[0])
+    b = clf.support_vectors_[-1]
+    yy_up = a * xx + (b[1] - a * b[0])
+    print "ho"
+    plt.plot(xx, yy, 'k-')
+    plt.plot(xx, yy_down, 'k--')
+    plt.plot(xx, yy_up, 'k--')
 
 
 
 
-
-    A,B = try_kpca()
-
-
-    for idx in range(len(A)):
-        plt.plot(A[idx][0], A[idx][1],'ro')
-    for idx in range(len(B)):
-        plt.plot(B[idx][0], B[idx][1],'bo')
+    for HE in HE_train_2dim:
+        plt.plot(HE[0],HE[1],'bo')
+    for MI in MI_train_2dim:
+        plt.plot(MI[0], MI[1],'ro')
     plt.show()
+
 
 if __name__ == "__main__":
     main()

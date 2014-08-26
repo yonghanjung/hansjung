@@ -9,7 +9,7 @@ def main():
     def mydata():
         from data_call import data_call
 
-        testnum = 6
+        testnum = 3
         mysignal = data_call("PPG_KW", testnum, 0)
         return testnum, mysignal
 
@@ -42,12 +42,13 @@ def main():
 
         # slope = -0.75
         # start = 0.2*max(mysignal)
-        adap = [thr_old]
+        adap = {}
         mode = 'thr'
         cross = False
-        adap_it = 0
+
 
         for idx in range(len(mysignal)):
+
             # 모드 : sig, thr
             # thr 모드 : 직선을 타고 내려간다.
             # sig 모드 : 신호를 타고 올라간다.
@@ -70,8 +71,8 @@ def main():
 
             # MODE CHECK
             if idx > 0:
-                prev_thr = adap[len(adap) - 2]
-                cur_thr = adap[len(adap) - 1]
+                prev_thr = adap[idx-1]
+                cur_thr = adap[idx-1]+ (Sr * (( Vpeak + StdPPG) / Fs))
                 prev_sig = mysignal[idx - 1]
                 cur_sig = mysignal[idx]
                 cross = check_cross(prev_thr, prev_sig, cur_thr, cur_sig)
@@ -81,25 +82,34 @@ def main():
             if mode == 'thr':
                 if cross == False:
                     mode = 'thr'
-                    thr_new = adap[adap_it] + (Sr * (( Vpeak + StdPPG) / Fs))
-                    adap_it += 1
-                    adap.append(thr_new)
+                    if idx == 0:
+                        thr_new = thr_old + (Sr * (( Vpeak + StdPPG) / Fs))
+                    else:
+                        thr_new = adap[idx-1] + (Sr * (( Vpeak + StdPPG) / Fs))
+                    #adap_it += 1
+                    #adap.append(thr_new)
+                    adap.update( {idx :thr_new }  )
 
                 elif cross == True:
                     mode = 'sig'
-                    adap.append(cur_sig)
-                    adap_it += 1
+                    adap.update( {idx : cur_sig}  )
+                    #adap.append(cur_sig)
+                    #adap_it += 1
                     continue
 
             elif mode == 'sig':
-                if cur_sig > prev_sig:
-                    adap.append(cur_sig)
-                    adap_it += 1
-                if cur_sig < prev_sig:
-                    adap.append(cur_sig)
-                    adap_it += 1
+                if cur_sig >= prev_sig:
+                    adap.update({idx : cur_sig})
+                    #adap.append(cur_sig)
+                    #adap_it += 1
+                else:
+                    new_thr = prev_sig + (Sr * (( Vpeak + StdPPG) / Fs))
+                    adap.update({idx : new_thr} )
+                    #adap.update({idx : cur_sig})
+                    #adap.append(cur_sig)
+                    #adap_it += 1
                     mode = 'thr'
-                    mymax.update({idx: prev_sig})
+                    mymax.update({idx-1: prev_sig})
                     Vpeak = prev_sig
                     continue
         return adap, mymax
@@ -113,8 +123,9 @@ def main():
         for key in sorted(mymax):
             plt.plot(key, mymax[key], 'ro')
 
-        plt.plot(mysignal)
-        plt.plot(adap)
+        plt.plot(mysignal, 'b')
+        plt.plot(adap.values() , 'g')
+        plt.grid()
         plt.xlabel("X index (1 data point every 1/75 sec.)")
         plt.ylabel("Scale modified Voltage value")
         plt.title("#" + str(testnum) + " Samples from Kiwook")

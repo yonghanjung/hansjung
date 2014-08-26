@@ -15,7 +15,7 @@ def article_list():
 
     rows = Article.query.count()
     rows -= 5
-    context['article_list'] = Article.query.order_by(desc(Article.data_created)).filter(Article.id > rows)
+        context['article_list'] = Article.query.order_by(desc(Article.data_created)).filter(Article.id > rows)
     return render_template("home.html", context=context, active_tab="timeline")
 
 
@@ -185,6 +185,8 @@ def user_join():
 
         flash(u'가입이 승인되었습니다. 비밀번호는 암호화되어 저장되어 관리자도 알 수 없습니다.', 'success')
         return redirect(url_for('article_list'))
+    else:
+        flash(u'비밀코드가 맞지 않습니다. 관리자에게 문의하세요.','danger')
 
     return render_template('user/join.html', form=form, active_tab='user_join')
 

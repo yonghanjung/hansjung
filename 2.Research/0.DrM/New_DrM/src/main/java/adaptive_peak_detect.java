@@ -39,11 +39,10 @@ public class adaptive_peak_detect {
         /* ------ */
 
         /* Initial Setting for Peak detection */
-        List<Double> adap = new ArrayList<Double>();
-        adap.add(thr_old);
+        Map<Integer ,Double> adap = new HashMap<Integer, Double>();
         String mode = "thr";
         boolean cross = false;
-        int adap_it = 0;
+
         double prev_thr = 0.0;
         double cur_thr = 0.0;
         double prev_sig = 0.0;
@@ -52,8 +51,8 @@ public class adaptive_peak_detect {
         /* Peak Detection Start */
         for (int idx = 0; idx < mysignal.size(); idx ++){
             if (idx > 0){
-                prev_thr = adap.get(adap.size() - 2);
-                cur_thr = adap.get(adap.size() - 1);
+                prev_thr = adap.get(idx-1);
+                cur_thr = adap.get(idx-1) + (Sr * ((Vpeak + StdPPG) / Fs));
                 prev_sig = mysignal.get(idx - 1);
                 cur_sig = mysignal.get(idx);
                 cross = check_cross(prev_thr, prev_sig, cur_thr, cur_sig);
@@ -65,26 +64,28 @@ public class adaptive_peak_detect {
             if (mode == "thr"){
                 if (cross == false){
                     mode = "thr";
-                    thr_new = adap.get(adap_it) + (Sr * ((Vpeak + StdPPG) / Fs));
-                    adap_it += 1;
-                    adap.add(thr_new);
+                    if (idx == 0){
+                        thr_new = thr_old + (Sr * (( Vpeak + StdPPG) / Fs));
+                    }
+                    else{
+                        thr_new = adap.get(idx-1) + (Sr * ((Vpeak + StdPPG) / Fs));
+                    }
+                    adap.put(idx, thr_new);
                 }
                 else if (cross == true){
                     mode = "sig";
-                    adap.add(cur_sig);
-                    adap_it += 1;
+                    adap.put(idx, cur_sig);
                     continue;
                 }
             }
 
             else if (mode == "sig"){
-                if (cur_sig > prev_sig){
-                    adap.add(cur_sig);
-                    adap_it += 1;
+                if (cur_sig >= prev_sig){
+                    adap.put(idx, cur_sig);
                 }
-                else if (cur_sig < prev_sig){
-                    adap.add(cur_sig);
-                    adap_it += 1;
+                else {
+                    Double new_thr = prev_sig + (Sr * (( Vpeak + StdPPG) / Fs));
+                    adap.put(idx , new_thr);
                     mode = "thr";
                     max_detect.put(idx,prev_sig);
                     Vpeak = prev_sig;
@@ -96,7 +97,7 @@ public class adaptive_peak_detect {
         return max_detect;
     }
 
-    List<Double> adap() {
+    Map<Integer, Double> Myadap() {
         Map<Integer, Double> max_detect = new HashMap<Integer, Double>();
 
         /* Call needed method */
@@ -112,49 +113,55 @@ public class adaptive_peak_detect {
         /* ------ */
 
         /* Initial Setting for Peak detection */
-        List<Double> adap = new ArrayList<Double>();
-        adap.add(thr_old);
+        Map<Integer ,Double> adap = new HashMap<Integer, Double>();
         String mode = "thr";
         boolean cross = false;
-        int adap_it = 0;
+
         double prev_thr = 0.0;
         double cur_thr = 0.0;
         double prev_sig = 0.0;
         double cur_sig = 0.0;
 
         /* Peak Detection Start */
-        for (int idx = 0; idx < mysignal.size(); idx++) {
-            if (idx > 0) {
-                prev_thr = adap.get(adap.size() - 2);
-                cur_thr = adap.get(adap.size() - 1);
+        for (int idx = 0; idx < mysignal.size(); idx ++){
+            if (idx > 0){
+                prev_thr = adap.get(idx-1);
+                cur_thr = adap.get(idx-1) + (Sr * ((Vpeak + StdPPG) / Fs));
                 prev_sig = mysignal.get(idx - 1);
                 cur_sig = mysignal.get(idx);
                 cross = check_cross(prev_thr, prev_sig, cur_thr, cur_sig);
-            } else {
+            }
+            else{
 
             }
 
-            if (mode == "thr") {
-                if (cross == false) {
+            if (mode == "thr"){
+                if (cross == false){
                     mode = "thr";
-                    thr_new = adap.get(adap_it) + (Sr * ((Vpeak + StdPPG) / Fs));
-                    adap_it += 1;
-                    adap.add(thr_new);
-                } else if (cross == true) {
+                    if (idx == 0){
+                        thr_new = thr_old + (Sr * (( Vpeak + StdPPG) / Fs));
+                    }
+                    else{
+                        thr_new = adap.get(idx-1) + (Sr * ((Vpeak + StdPPG) / Fs));
+                    }
+                    adap.put(idx, thr_new);
+                }
+                else if (cross == true){
                     mode = "sig";
-                    adap.add(cur_sig);
-                    adap_it += 1;
+                    adap.put(idx, cur_sig);
                     continue;
                 }
-            } else if (mode == "sig") {
-                if (cur_sig > prev_sig) {
-                    adap.add(cur_sig);
-                    adap_it += 1;
-                } else if (cur_sig < prev_sig) {
-                    adap.add(cur_sig);
-                    adap_it += 1;
+            }
+
+            else if (mode == "sig"){
+                if (cur_sig >= prev_sig){
+                    adap.put(idx, cur_sig);
+                }
+                else {
+                    Double new_thr = prev_sig + (Sr * (( Vpeak + StdPPG) / Fs));
+                    adap.put(idx , new_thr);
                     mode = "thr";
-                    max_detect.put(idx, prev_sig);
+                    max_detect.put(idx,prev_sig);
                     Vpeak = prev_sig;
                     continue;
                 }
