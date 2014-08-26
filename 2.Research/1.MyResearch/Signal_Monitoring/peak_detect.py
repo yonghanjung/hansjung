@@ -9,7 +9,7 @@ def main():
     def mydata():
         from data_call import data_call
 
-        testnum = 3
+        testnum = 4
         mysignal = data_call("PPG_KW", testnum, 0)
         return testnum, mysignal
 
@@ -37,8 +37,9 @@ def main():
         StdPPG = np.std(mysignal)
         thr_old = 0.5 * np.max(mysignal)
         thr_new = 0
-        Sr = -0.6
-
+        Sr = -0.3
+        cur_loc = 0
+        prev_loc = 0
 
         # slope = -0.75
         # start = 0.2*max(mysignal)
@@ -91,7 +92,13 @@ def main():
                     adap.update( {idx :thr_new }  )
 
                 elif cross == True:
-                    mode = 'sig'
+                    if prev_loc != 0:
+                        if idx - prev_loc < 0.6 * Fs:
+                            mode = 'thr'
+                        else:
+                            mode = 'sig'
+                    else:
+                        mode = 'sig'
                     adap.update( {idx : cur_sig}  )
                     #adap.append(cur_sig)
                     #adap_it += 1
@@ -100,14 +107,13 @@ def main():
             elif mode == 'sig':
                 if cur_sig >= prev_sig:
                     adap.update({idx : cur_sig})
-                    #adap.append(cur_sig)
-                    #adap_it += 1
+
                 else:
+                    prev_loc = cur_loc
+                    cur_loc = idx-1
                     new_thr = prev_sig + (Sr * (( Vpeak + StdPPG) / Fs))
                     adap.update({idx : new_thr} )
-                    #adap.update({idx : cur_sig})
-                    #adap.append(cur_sig)
-                    #adap_it += 1
+
                     mode = 'thr'
                     mymax.update({idx-1: prev_sig})
                     Vpeak = prev_sig

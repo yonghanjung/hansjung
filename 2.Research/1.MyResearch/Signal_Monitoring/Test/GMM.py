@@ -2,7 +2,7 @@
 
 
 __author__ = 'jeong-yonghan'
-
+from sklearn import svm
 
 def main():
     '''
@@ -215,39 +215,92 @@ def main():
     for MI_test in MI_test_kpca:
         MI_test_2dim.append([MI_test[0], MI_test[1]])
 
-    Test_2dim = HE_test_2dim + MI_test_2dim
+    Test_2dim = np.array(HE_test_2dim + MI_test_2dim)
 
-    Train_2dim = HE_train_2dim + MI_train_2dim
-    Training_class = [0] * 24 + [1] * 150
-    Test_class = [0] * 13 + [1] * 58
-    print "ho1"
-    from sklearn import svm
+    Train_2dim = np.array(HE_train_2dim + MI_train_2dim)
 
-    clf = svm.SVC(kernel = 'linear')
-    print "ho2"
-    clf.fit(Train_2dim, Training_class)
-    print "ho3"
+    Training_class = [-1] * 24 + [1] * 150
+    Test_class = [-1] * 13 + [1] * 58
+
+
+    # clf = svm.SVC(kernel = "linear")
+    normal_train_2dim = []; normal_test_2dim = []
+    x_training_max = np.max(Train_2dim[:,0])
+    y_training_max = np.max(Train_2dim[:,1])
+
+    x_test_max = np.max(Test_2dim[:,0])
+    y_test_max = np.max(Test_2dim[:,1])
+
+    norm_max = max(x_training_max,y_training_max, x_test_max, y_test_max)
+
+    for x,y in Train_2dim:
+        norm_x = 100* (x / norm_max)
+        norm_y = 100* (y / norm_max)
+        normal_train_2dim.append([norm_x, norm_y])
+
+    for x,y in Test_2dim:
+        norm_x = 100 * (x / norm_max)
+        norm_y = 100 * (y / norm_max)
+        normal_test_2dim.append([norm_x, norm_y])
+
+    normal_train_2dim = np.array(normal_train_2dim)
+    normal_test_2dim = np.array(normal_test_2dim)
+
+    '''
+    for point in normal_train_2dim:
+        plt.plot(point[0], point[1],'bo')
+    plt.show()
+    '''
+
+    '''
+    0826 - 여기까지 normalizing이 완료되었다.
+    '''
+
+    clf = svm.SVC(kernel = "linear")
+    clf.fit(normal_train_2dim, Training_class)
     w = clf.coef_[0]
+
     a = -w[0] / w[1]
-    xx = np.linspace(-10000, 10000)
-    yy = a * xx - (clf.intercept_[0]) / w[1]
+    #print a
+    xx = np.linspace(-100,100)
+    #print xx
+    yy = a * xx - (clf.intercept_[0])
+    #print w[1]
+
+
     b = clf.support_vectors_[0]
     yy_down = a * xx + (b[1] - a * b[0])
     b = clf.support_vectors_[-1]
     yy_up = a * xx + (b[1] - a * b[0])
-    print "ho"
-    plt.plot(xx, yy, 'k-')
-    plt.plot(xx, yy_down, 'k--')
-    plt.plot(xx, yy_up, 'k--')
+
+    yy = [(x+y)/2 for x,y in zip(yy_down, yy_up)]
 
 
+    plt.plot(xx, yy, 'r-')
+    plt.plot(xx, yy_down, 'b--')
+    plt.plot(xx, yy_up, 'g--')
+    plt.plot(b,'ro')
+
+    plt.scatter(clf.support_vectors_[:, 0], clf.support_vectors_[:, 1],s=80, facecolors='none')
+    plt.scatter(normal_train_2dim[:, 0], normal_train_2dim[:, 1], c=Training_class, cmap=plt.cm.Paired)
+
+    #plt.scatter(normal_test_2dim[:,0], normal_test_2dim[:,1], c=Test_class, cmap = plt.cm.Paired)
+    for idx in range(13):
+        plt.plot(normal_test_2dim[idx][0], normal_test_2dim[idx][1],'yo')
+
+    for idx in range(13,71):
+        plt.plot(normal_test_2dim[idx][0], normal_test_2dim[idx][1],'go')
 
 
-    for HE in HE_train_2dim:
-        plt.plot(HE[0],HE[1],'bo')
-    for MI in MI_train_2dim:
-        plt.plot(MI[0], MI[1],'ro')
+    plt.axis('tight')
     plt.show()
+
+
+    print yy
+
+
+
+
 
 
 if __name__ == "__main__":

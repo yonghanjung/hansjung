@@ -35,7 +35,9 @@ public class adaptive_peak_detect {
         double StdPPG = mystat.getStdDev();
         Double thr_old = Collections.max(mysignal);
         double thr_new = 0.0;
-        double Sr = -0.6;
+        double Sr = -0.3;
+        double cur_loc = 0;
+        double prev_loc = 0;
         /* ------ */
 
         /* Initial Setting for Peak detection */
@@ -73,7 +75,17 @@ public class adaptive_peak_detect {
                     adap.put(idx, thr_new);
                 }
                 else if (cross == true){
-                    mode = "sig";
+                    if (prev_loc != 0){
+                        if (idx - prev_loc < 0.6*Fs) {
+                            mode = "thr";
+                        }
+                        else{
+                            mode = "sig";
+                        }
+                    }
+                    else{
+                        mode = "sig";
+                    }
                     adap.put(idx, cur_sig);
                     continue;
                 }
@@ -84,6 +96,8 @@ public class adaptive_peak_detect {
                     adap.put(idx, cur_sig);
                 }
                 else {
+                    prev_loc = cur_loc;
+                    cur_loc = idx - 1;
                     Double new_thr = prev_sig + (Sr * (( Vpeak + StdPPG) / Fs));
                     adap.put(idx , new_thr);
                     mode = "thr";
@@ -109,7 +123,9 @@ public class adaptive_peak_detect {
         double StdPPG = mystat.getStdDev();
         Double thr_old = Collections.max(mysignal);
         double thr_new = 0.0;
-        double Sr = -0.6;
+        double Sr = -0.3;
+        double cur_loc = 0;
+        double prev_loc = 0;
         /* ------ */
 
         /* Initial Setting for Peak detection */
@@ -147,7 +163,17 @@ public class adaptive_peak_detect {
                     adap.put(idx, thr_new);
                 }
                 else if (cross == true){
-                    mode = "sig";
+                    if (prev_loc != 0){
+                        if (idx - prev_loc < 0.6*Fs){
+                            mode = "thr";
+                        }
+                        else{
+                            mode = "sig";
+                        }
+                    }
+                    else{
+                        mode = "sig";
+                    }
                     adap.put(idx, cur_sig);
                     continue;
                 }
@@ -158,6 +184,8 @@ public class adaptive_peak_detect {
                     adap.put(idx, cur_sig);
                 }
                 else {
+                    prev_loc = cur_loc;
+                    cur_loc = idx - 1;
                     Double new_thr = prev_sig + (Sr * (( Vpeak + StdPPG) / Fs));
                     adap.put(idx , new_thr);
                     mode = "thr";

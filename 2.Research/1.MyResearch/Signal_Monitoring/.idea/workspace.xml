@@ -26,12 +26,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mitdb_download.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mitdb_download.py">
+      <file leaf-file-name="GMM.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/GMM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1603" max-vertical-offset="2505">
+              <caret line="257" column="0" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+              <folding>
+                <element signature="e#96#721#1" expanded="false" />
+                <element signature="e#904#2128#0" expanded="false" />
+                <element signature="e#2158#2645#0" expanded="false" />
+                <element signature="e#2679#3220#0" expanded="false" />
+                <element signature="e#3426#4162#0" expanded="false" />
+                <element signature="e#4220#5298#0" expanded="false" />
+                <element signature="e#5351#5410#1" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,8 +47,18 @@
       <file leaf-file-name="peak_detect.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/peak_detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5859375" vertical-offset="1275" max-vertical-offset="2190">
-              <caret line="105" column="72" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.52734375" vertical-offset="1500" max-vertical-offset="2280">
+              <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="temp.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/temp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -49,8 +67,8 @@
       <file leaf-file-name="temptest.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/temptest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="165">
-              <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="180">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,17 +109,18 @@
         <option value="$PROJECT_DIR$/HRV.py" />
         <option value="$PROJECT_DIR$/adaptive_peak_module.py" />
         <option value="$PROJECT_DIR$/data_call.py" />
-        <option value="$PROJECT_DIR$/temptest.py" />
         <option value="$PROJECT_DIR$/mitdb_download.py" />
+        <option value="$PROJECT_DIR$/temptest.py" />
         <option value="$PROJECT_DIR$/Test/GMM.py" />
+        <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/peak_detect.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="53" />
+    <option name="x" value="51" />
     <option name="y" value="22" />
-    <option name="width" value="1387" />
+    <option name="width" value="1389" />
     <option name="height" value="874" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -130,7 +149,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -151,10 +169,11 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/liketalk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../2.Study" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -181,7 +200,7 @@
       <recent name="$PROJECT_DIR$/Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.GMM">
+  <component name="RunManager" selected="Python.peak_detect">
     <configuration default="false" name="peak_detect" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -195,24 +214,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="WaveLab" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/peak_detect.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="HRV" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="WaveLab" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HRV.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -250,7 +251,9 @@
       <module name="WaveLab" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/GMM.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -271,6 +274,24 @@
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="WaveLab" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -397,18 +418,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.peak_detect" />
-      <item index="1" class="java.lang.String" itemvalue="Python.HRV" />
-      <item index="2" class="java.lang.String" itemvalue="Python.temptest" />
-      <item index="3" class="java.lang.String" itemvalue="Python.GMM" />
-      <item index="4" class="java.lang.String" itemvalue="Python.mitdb_download" />
+      <item index="1" class="java.lang.String" itemvalue="Python.temptest" />
+      <item index="2" class="java.lang.String" itemvalue="Python.GMM" />
+      <item index="3" class="java.lang.String" itemvalue="Python.mitdb_download" />
+      <item index="4" class="java.lang.String" itemvalue="Python.temp" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.GMM" />
-        <item index="1" class="java.lang.String" itemvalue="Python.peak_detect" />
-        <item index="2" class="java.lang.String" itemvalue="Python.mitdb_download" />
-        <item index="3" class="java.lang.String" itemvalue="Python.temptest" />
-        <item index="4" class="java.lang.String" itemvalue="Python.HRV" />
+        <item index="0" class="java.lang.String" itemvalue="Python.peak_detect" />
+        <item index="1" class="java.lang.String" itemvalue="Python.temp" />
+        <item index="2" class="java.lang.String" itemvalue="Python.GMM" />
+        <item index="3" class="java.lang.String" itemvalue="Python.mitdb_download" />
+        <item index="4" class="java.lang.String" itemvalue="Python.temptest" />
       </list>
     </recent_temporary>
   </component>
@@ -425,26 +446,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="22" width="1387" height="874" extended-state="6" />
+    <frame x="51" y="22" width="1389" height="874" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24873829" sideWeight="0.4888889" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24838012" sideWeight="0.4888889" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24873829" sideWeight="0.5092593" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24838012" sideWeight="0.51111114" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -469,13 +490,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_call.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1245">
-          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Wavelet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3285">
@@ -721,13 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wavelet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5175">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
@@ -798,39 +805,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mitdb_download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5859375" vertical-offset="0" max-vertical-offset="512">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/temptest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wavelet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9882812" vertical-offset="1665" max-vertical-offset="5175">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/GMM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12109375" vertical-offset="1888" max-vertical-offset="2505">
-          <caret line="222" column="15" selection-start-line="222" selection-start-column="15" selection-end-line="222" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1603" max-vertical-offset="2505">
+          <caret line="257" column="0" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
           <folding>
-            <element signature="e#73#698#1" expanded="false" />
-            <element signature="e#881#2105#0" expanded="false" />
-            <element signature="e#2135#2622#0" expanded="false" />
-            <element signature="e#2656#3197#0" expanded="false" />
+            <element signature="e#96#721#1" expanded="false" />
+            <element signature="e#904#2128#0" expanded="false" />
+            <element signature="e#2158#2645#0" expanded="false" />
+            <element signature="e#2679#3220#0" expanded="false" />
+            <element signature="e#3426#4162#0" expanded="false" />
+            <element signature="e#4220#5298#0" expanded="false" />
+            <element signature="e#5351#5410#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mitdb_download.py">
+    <entry file="file://$PROJECT_DIR$/temp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/peak_detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5859375" vertical-offset="1275" max-vertical-offset="2190">
-          <caret line="105" column="72" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.52734375" vertical-offset="1500" max-vertical-offset="2280">
+          <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
           <folding />
         </state>
       </provider>
