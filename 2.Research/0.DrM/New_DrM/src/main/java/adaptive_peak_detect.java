@@ -38,6 +38,7 @@ public class adaptive_peak_detect {
         double Sr = -0.3;
         double cur_loc = 0;
         double prev_loc = 0;
+        double refract = 0.6;
         /* ------ */
 
         /* Initial Setting for Peak detection */
@@ -76,7 +77,7 @@ public class adaptive_peak_detect {
                 }
                 else if (cross == true){
                     if (prev_loc != 0){
-                        if (idx - prev_loc < 0.6*Fs) {
+                        if (idx - prev_loc < refract*Fs) {
                             mode = "thr";
                         }
                         else{
@@ -126,6 +127,7 @@ public class adaptive_peak_detect {
         double Sr = -0.3;
         double cur_loc = 0;
         double prev_loc = 0;
+        double refract = 0.6;
         /* ------ */
 
         /* Initial Setting for Peak detection */
@@ -164,7 +166,7 @@ public class adaptive_peak_detect {
                 }
                 else if (cross == true){
                     if (prev_loc != 0){
-                        if (idx - prev_loc < 0.6*Fs){
+                        if (idx - prev_loc < refract*Fs){
                             mode = "thr";
                         }
                         else{

@@ -4,7 +4,7 @@ from flask import render_template, request, url_for, redirect, flash, session, g
 import pusher
 from apps.forms import ArticleForm, CommentForm, JoinForm, LoginForm
 from apps import app, db
-from sqlalchemy import desc
+from sqlalchemy import desc, asc
 from apps.models import Article, Comment, User
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -15,7 +15,7 @@ def article_list():
 
     rows = Article.query.count()
     rows -= 5
-        context['article_list'] = Article.query.order_by(desc(Article.data_created)).filter(Article.id > rows)
+    context['article_list'] = Article.query.order_by(asc(Article.data_created)).filter(Article.id > rows)
     return render_template("home.html", context=context, active_tab="timeline")
 
 
