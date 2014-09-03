@@ -223,23 +223,31 @@ def Kernel_PCA(HE_MI_train_test, kernel, invTran, degree):
     HE_test_kpca = kpca.fit_transform(my_HEtest)
     MI_test_kpca = kpca.fit_transform(my_MItest)
 
+    return [HE_training_kpca, MI_training_kpca, HE_test_kpca, MI_test_kpca]
 
 
-    HE_training_KPCA_2dim = [];
-    MI_training_KPCA_2dim = []
-    HE_test_KPCA_2dim = [];
-    MI_test_KPCA_2dim = []
+def Compute_var_ratio(HE_MI_train_test, kernel, invTran, degree):
+    MyDataSet = HE_MI_train_test
+    my_HEtraining = MyDataSet[0]
+    my_MItraining = MyDataSet[1]
+    my_HEtest = MyDataSet[2]
+    my_MItest = MyDataSet[3]
 
-    for pt in HE_training_kpca:
-        HE_training_KPCA_2dim.append((pt[0], pt[1]))
-    for pt in MI_training_kpca:
-        MI_training_KPCA_2dim.append((pt[0], pt[1]))
-    for pt in HE_test_kpca:
-        HE_test_KPCA_2dim.append((pt[0], pt[1]))
-    for pt in MI_test_kpca:
-        MI_test_KPCA_2dim.append((pt[0], pt[1]))
+    kpca = KernelPCA(kernel=kernel, fit_inverse_transform=invTran, degree=degree)
+    HE_train_kpca = kpca.fit(my_HEtraining)
+    HE_train_var = HE_train_kpca.lambdas_
 
-    return [HE_training_KPCA_2dim, MI_training_KPCA_2dim, HE_test_KPCA_2dim, MI_test_KPCA_2dim]
+    MI_train_kpca = kpca.fit(my_MItraining)
+    MI_train_var = MI_train_kpca.lambdas_
+
+    HE_test_kpca = kpca.fit(my_HEtest)
+    HE_test_var = HE_test_kpca.lambdas_
+
+    MI_test_kpca = kpca.fit(my_MItest)
+    MI_test_var = MI_test_kpca.lambdas_
+
+    return [HE_train_var, MI_train_var, HE_test_var, MI_test_var]
+
 
 
 def Train_Test_index(numHEtrain, numMItrain):
@@ -370,6 +378,63 @@ def check_up(point, xxline, slope, intercept):
         return False
 
 
+def Normal_for_faster_SVM(Result_Kernel_PCA):
+    HETR = Result_Kernel_PCA[0]
+    MITR = Result_Kernel_PCA[1]
+    HETE = Result_Kernel_PCA[2]
+    MITE = Result_Kernel_PCA[3]
+
+    HETR_max = np.max(HETR)
+    HETE_max = np.max(HETE)
+    MITR_max = np.max(MITR)
+    MITE_max = np.max(MITE)
+
+    all_max = max(HETR_max, HETE_max, MITR_max, MITE_max)
+
+    NHETR = np.array(HETR) / all_max
+    NMITR = np.array(MITR) / all_max
+    NHETE = np.array(HETE) / all_max
+    NMITE = np.array(MITE) / all_max
+
+    return [NHETR, NMITR, NHETE, NMITE]
+
+
+def SVM_predict(Result_Normal_Kernel_PCA):
+    My_Result_KPCA = Result_Normal_Kernel_PCA
+    HE_training_kpca = My_Result_KPCA[0]
+    MI_training_kpca = My_Result_KPCA[1]
+    HE_test_kpca = My_Result_KPCA[2]
+    MI_test_kpca = My_Result_KPCA[3]
+
+    clf = svm.SVC(kernel = "linear")
+
+
+    # Dimension cut to 14
+    HE_training_kpca_result = []; MI_training_kpca_result = []
+    HE_test_kpca_result = []; MI_test_kpca_result = []
+    for pt in HE_training_kpca:
+        HE_training_kpca_result.append(pt[:14])
+    for pt in MI_training_kpca:
+        MI_training_kpca_result.append(pt[:14])
+    for pt in HE_test_kpca:
+        HE_test_kpca_result.append(pt[:14])
+    for pt in MI_test_kpca:
+        MI_test_kpca_result.append(pt[:14])
+
+    Training_idx = [1] * len(HE_training_kpca) + [-1] * len(MI_training_kpca)
+    Test_idx = [1] * len(HE_test_kpca) + [-1] * len(MI_test_kpca)
+
+    Training_kpca = np.array(HE_training_kpca_result + MI_training_kpca_result)
+    Test_kpca = np.array(HE_test_kpca_result + MI_test_kpca_result)
+
+
+    clf.fit(Training_kpca, Training_idx)
+
+
+    return clf.predict(Test_kpca)
+
+
+
 def main():
     '''
     0. 기본 세팅. 데이터를 불러들여서, Training / Test로 자른다.
@@ -386,140 +451,60 @@ def main():
     # MI Train 150 // MI test 58
     HE_MI_train_test = decompose_train_test(24, 150, HE_MI_matrix)
 
-    '''
-    1. Linear PCA 결과는 나쁘고 Kernel PCA는 좋다는 것을 보여준다. (눈으로 보기에)
-    '''
+    Result_Kernel_PCA = Kernel_PCA(HE_MI_train_test, 'poly', True, 3)
 
-    # Linear PCA 결과가 나쁘다는 것을 보여준다.
-    plt.figure(0)
-    plt.title("Linear PCA")
-    A = Linear_PCA(HE_MI_train_test)
-    PCA_HE_train = A[0]
-    PCA_MI_train = A[1]
-    for pt in PCA_HE_train:
-        plt.plot(pt[0], pt[1], 'bo')
-    for pt in PCA_MI_train:
-        plt.plot(pt[0], pt[1], 'ro')
+    Result_Normal_Kernel_PCA = Normal_for_faster_SVM(Result_Kernel_PCA)
 
+    My_Result_KPCA = Result_Normal_Kernel_PCA
 
-    # Kernel PCA 결과가 좋다는 것을 보여준다.
-    plt.figure(1)
-    plt.title("Kernel PCA")
-    A = Kernel_PCA(HE_MI_train_test, 'poly', True, 5)
-    KPCA_HE_train = A[0]
-    KPCA_MI_train = A[1]
-    for row in KPCA_HE_train:
-        plt.plot(row[0], row[1], 'bo')
-    for row in KPCA_MI_train:
-        plt.plot(row[0], row[1], 'ro')
-    # plt.show()
+    HE_training_kpca = My_Result_KPCA[0]
+    MI_training_kpca = My_Result_KPCA[1]
+    HE_test_kpca = My_Result_KPCA[2]
+    MI_test_kpca = My_Result_KPCA[3]
 
-    '''
-    2. Kernel PCA 에서 나온 숫자들이 너무 크니, 이 숫자들을 normalize한다.
-    '''
+    clf = svm.SVC()
 
-    KernelPCA_matrix = Kernel_PCA(HE_MI_train_test, 'poly', True, 3)
-    Each_normal = Each_Normalized(KernelPCA_matrix)
-    Normal_KPCA_HE_train = Each_normal[0]
-    Normal_KPCA_MI_train = Each_normal[1]
-    Normal_KPCA_HE_test = Each_normal[2]
-    Normal_KPCA_MI_test = Each_normal[3]
+    #Dimcut
+    HE_training_kpca_result = []; MI_training_kpca_result = []
+    HE_test_kpca_result = []; MI_test_kpca_result = []
 
-    Test_Train_Normal = Test_Train_Normalized(KernelPCA_matrix)
-    Normal_Train_2dim = Test_Train_Normal[0]
-    Normal_Test_2dim = Test_Train_Normal[1]
+    for idx in HE_training_kpca:
+        HE_training_kpca_result.append(idx[:10])
+    for idx in MI_training_kpca:
+        MI_training_kpca_result.append(idx[:10])
+    for idx in HE_test_kpca:
+        HE_test_kpca_result.append(idx[:10])
+    for idx in MI_test_kpca:
+        MI_test_kpca_result.append(idx[:10])
 
+    Training_result = (HE_training_kpca_result + MI_training_kpca_result)
+    Training_idx = [1] * len(HE_training_kpca_result) + [-1] * len(MI_training_kpca_result)
 
-    '''
-    3. SVM Training
-    '''
+    clf.fit(Training_result, Training_idx)
 
-    # TEST, Train Class 를 부른다.
-    Training_class = [1] * 24 + [-1] * 150
-    Test_class = [1] * 13 + [-1] * 58
+    Test_result = (HE_test_kpca_result + MI_test_kpca_result)
+    Test_idx = [1] * len(HE_test_kpca_result) + [-1]*len(MI_test_kpca_result)
 
-    # SVM 함수를 정의하고 Training
-    #clf = svm.SVC(kernel="sigmoid")
-    clf = svm.SVC(kernel = "linear")
-    clf.fit(Normal_Train_2dim, Training_class)
+    print clf.predict(Test_result), len(clf.predict(Test_result))
+    print Test_idx, len(Test_idx)
 
+    sum_ac = 0
+    for x,y in zip(clf.predict(Test_result), Test_idx):
+        if x == y:
+            sum_ac += 1
 
-    ''' Linear SVM
-    '''
-    # SVM 함수의 기울기를 구한다.
-    w = clf.coef_[0]
-    #a = w[0] / w[1]
-    a = - w[0] / w[1]
-    xx = np.linspace(-100, 100)
-    b = clf.support_vectors_[0]
-    yy_down = a * xx + (b[1] - a * b[0])
-    b = clf.support_vectors_[-1]
-    yy_up = a * xx + (b[1] - a * b[0])
-
-    # SVM 함수로 Line을 그려낸다.
-    #yy = a * xx - (clf.intercept_[0])
-    yy = [a+b for a,b in zip(yy_up, yy_down)]
-
-    plt.figure(2)
-    plt.title("SVM Training Result")
-
-    for row in Normal_KPCA_HE_train:
-        plt.plot(row[0], row[1], 'bo')
-    for row in Normal_KPCA_MI_train:
-        plt.plot(row[0], row[1], 'ro')
-
-    plt.plot(xx, yy, 'r-')
-
-    '''
-    5. Performance 계산하기
-    '''
-    plt.figure(3)
-    plt.title("SVM TEST RESULT")
-    plt.plot(xx, yy, 'r--')
-
-    for test_point in Normal_KPCA_HE_test:
-        plt.plot(test_point[0], test_point[1], 'bo')
-    for test_point in Normal_KPCA_MI_test:
-        plt.plot(test_point[0], test_point[1], 'ro')
-
-    for test_point in Normal_KPCA_HE_train:
-        plt.plot(test_point[0], test_point[1], 'go')
-        #print test_point[0], test_point[1]
-    for test_point in Normal_KPCA_MI_train:
-        plt.plot(test_point[0], test_point[1], 'yo')
-        #print test_point[0], test_point[1]
-
-
-    MyGuess = []
-    for test_point in Normal_Test_2dim:
-        A =  clf.predict(test_point)
-        MyGuess.append(A[0])
-
-    print MyGuess
-    print Test_class
-    print sum(x == y for x, y in zip(MyGuess, Test_class))
+    print sum_ac
 
 
 
 
-    '''
-    for test_point in Normal_Test_2dim:
-        if check_up(test_point, xx, a, - (clf.intercept_[0])) == True:
-            ## test_point = MI
-            MyGuess.append(-1)
-        else:
-            MyGuess.append(1)
 
 
 
 
-    print len(Normal_KPCA_HE_test)
-    print MyGuess
-    print Test_class
-    print sum(x == y for x, y in zip(MyGuess, Test_class))
-    '''
 
-    #plt.show()
+
+
 
 
 

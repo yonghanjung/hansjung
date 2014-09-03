@@ -42,7 +42,7 @@ public class Main {
         System.out.println("SD2");
         System.out.println(hrv.PoinPlot_sd2(RR_time_interval,2));
 
-        System.out.println([1,2,3]);
+
 
     }
 }

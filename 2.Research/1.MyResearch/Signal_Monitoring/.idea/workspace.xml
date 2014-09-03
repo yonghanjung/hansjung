@@ -26,23 +26,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GMM.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Test/GMM.py">
+      <file leaf-file-name="peak_detect.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/peak_detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76171875" vertical-offset="0" max-vertical-offset="3045">
-              <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1866" max-vertical-offset="2355">
+              <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="peak_detect_batch.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Test/peak_detect_batch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2638037" vertical-offset="2166" max-vertical-offset="2685">
+              <caret line="153" column="51" selection-start-line="153" selection-start-column="51" selection-end-line="153" selection-end-column="51" />
               <folding>
-                <element signature="e#73#91#0" expanded="true" />
-                <element signature="e#505#2335#0" expanded="false" />
-                <element signature="e#2378#3257#0" expanded="false" />
-                <element signature="e#3302#3823#0" expanded="false" />
-                <element signature="e#3895#4637#0" expanded="false" />
-                <element signature="e#4688#5672#0" expanded="false" />
-                <element signature="e#5748#6789#0" expanded="false" />
-                <element signature="e#6842#7044#0" expanded="false" />
-                <element signature="e#7083#9113#0" expanded="false" />
-                <element signature="e#9158#10285#0" expanded="false" />
-                <element signature="e#10339#10670#0" expanded="false" />
+                <element signature="e#44#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,13 +99,16 @@
         <option value="$PROJECT_DIR$/Module/__init__.py" />
         <option value="$PROJECT_DIR$/Module/data_call.py" />
         <option value="$PROJECT_DIR$/Module/bandpass.py" />
-        <option value="$PROJECT_DIR$/Test/peak_detect.py" />
         <option value="$PROJECT_DIR$/Module/Wavelet.py" />
         <option value="$PROJECT_DIR$/Temp/demo_data_transform.py" />
         <option value="$PROJECT_DIR$/Test/debug.py" />
         <option value="$PROJECT_DIR$/Temp/temptest.py" />
+        <option value="$PROJECT_DIR$/Test/peak_detect.py" />
+        <option value="$PROJECT_DIR$/Test/__init__.py" />
         <option value="$PROJECT_DIR$/Temp/temp.py" />
         <option value="$PROJECT_DIR$/Test/GMM.py" />
+        <option value="$PROJECT_DIR$/Test/GMM_more_param.py" />
+        <option value="$PROJECT_DIR$/Test/peak_detect_batch.py" />
       </list>
     </option>
   </component>
@@ -193,7 +196,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../0.DrM/DrM_Python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Best_WCs" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -210,6 +213,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Temp" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Data" />
       <recent name="$PROJECT_DIR$/Test" />
@@ -221,7 +225,7 @@
       <recent name="$PROJECT_DIR$/Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.GMM">
+  <component name="RunManager" selected="Python.peak_detect_batch">
     <configuration default="false" name="GMM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -242,7 +246,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="debug" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="peak_detect" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -254,61 +258,61 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="WaveLab" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/debug.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/peak_detect.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="temptest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="GMM_more_param" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Temp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="WaveLab" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Temp/temptest.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/GMM_more_param.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="demo_data_transform" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="peak_detect_batch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Temp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="WaveLab" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Temp/demo_data_transform.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/peak_detect_batch.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Python Console" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Temp" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="WaveLab" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Temp/temp.py" />
+      <option name="SCRIPT_NAME" value="/Python Console" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -437,18 +441,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.GMM" />
-      <item index="1" class="java.lang.String" itemvalue="Python.debug" />
-      <item index="2" class="java.lang.String" itemvalue="Python.temptest" />
-      <item index="3" class="java.lang.String" itemvalue="Python.demo_data_transform" />
-      <item index="4" class="java.lang.String" itemvalue="Python.temp" />
+      <item index="1" class="java.lang.String" itemvalue="Python.peak_detect" />
+      <item index="2" class="java.lang.String" itemvalue="Python.GMM_more_param" />
+      <item index="3" class="java.lang.String" itemvalue="Python.peak_detect_batch" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Python Console" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.GMM" />
-        <item index="1" class="java.lang.String" itemvalue="Python.temp" />
-        <item index="2" class="java.lang.String" itemvalue="Python.temptest" />
-        <item index="3" class="java.lang.String" itemvalue="Python.debug" />
-        <item index="4" class="java.lang.String" itemvalue="Python.demo_data_transform" />
+        <item index="0" class="java.lang.String" itemvalue="Python.peak_detect_batch" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Python Console" />
+        <item index="2" class="java.lang.String" itemvalue="Python.peak_detect" />
+        <item index="3" class="java.lang.String" itemvalue="Python.GMM_more_param" />
+        <item index="4" class="java.lang.String" itemvalue="Python.GMM" />
       </list>
     </recent_temporary>
   </component>
@@ -464,19 +468,39 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="51" y="22" width="1389" height="874" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24838012" sideWeight="0.4888889" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25219297" sideWeight="0.48742747" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24838012" sideWeight="0.51111114" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25219297" sideWeight="0.5106383" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33887467" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -512,10 +536,37 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Test/GMM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="3045">
+          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding>
+            <element signature="e#73#91#0" expanded="true" />
+            <element signature="e#505#2335#0" expanded="false" />
+            <element signature="e#2378#3257#0" expanded="false" />
+            <element signature="e#3302#3823#0" expanded="false" />
+            <element signature="e#3895#4637#0" expanded="false" />
+            <element signature="e#4688#5672#0" expanded="false" />
+            <element signature="e#6834#7036#0" expanded="false" />
+            <element signature="e#7075#9105#0" expanded="false" />
+            <element signature="e#9150#10277#0" expanded="false" />
+            <element signature="e#10331#10662#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Temp/temptest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="390">
+          <caret line="20" column="37" selection-start-line="6" selection-start-column="0" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1875">
@@ -577,7 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0" vertical-offset="291" max-vertical-offset="1245">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -585,15 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52734375" vertical-offset="0" max-vertical-offset="512">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/peak_detect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43945312" vertical-offset="0" max-vertical-offset="2355">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.9257812" vertical-offset="2190" max-vertical-offset="9150">
           <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05859375" vertical-offset="0" max-vertical-offset="5295">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,7 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,7 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.7795591" vertical-offset="1886" max-vertical-offset="3210">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -641,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -649,7 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.029296875" vertical-offset="0" max-vertical-offset="512">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -657,7 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1470">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -665,9 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,7 +707,7 @@
         <state vertical-scroll-proportion="0.47265625" vertical-offset="2668" max-vertical-offset="4230">
           <caret line="194" column="23" selection-start-line="194" selection-start-column="23" selection-end-line="194" selection-end-column="23" />
           <folding>
-            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,9 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.22851562" vertical-offset="1069" max-vertical-offset="2312">
           <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -702,10 +730,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Temp/HE.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/numpy-1.8.1-py2.7-macosx-10.9-intel.egg/numpy/core/_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2760736" vertical-offset="0" max-vertical-offset="1935">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/GMM_more_param.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55419225" vertical-offset="539" max-vertical-offset="4320">
+          <caret line="228" column="12" selection-start-line="228" selection-start-column="12" selection-end-line="228" selection-end-column="12" />
+          <folding>
+            <element signature="e#73#91#0" expanded="false" />
+            <element signature="e#505#2335#0" expanded="false" />
+            <element signature="e#2378#3257#0" expanded="false" />
+            <element signature="e#3302#3823#0" expanded="false" />
+            <element signature="e#3895#4637#0" expanded="false" />
+            <element signature="e#4688#5672#0" expanded="false" />
+            <element signature="e#7077#7279#0" expanded="false" />
+            <element signature="e#9393#10520#0" expanded="false" />
+            <element signature="e#10574#10905#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/GMM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.022494888" vertical-offset="1744" max-vertical-offset="3630">
+          <caret line="407" column="53" selection-start-line="407" selection-start-column="8" selection-end-line="407" selection-end-column="53" />
+          <folding>
+            <element signature="e#73#91#0" expanded="true" />
+            <element signature="e#505#2335#0" expanded="false" />
+            <element signature="e#2378#3257#0" expanded="false" />
+            <element signature="e#3302#3823#0" expanded="false" />
+            <element signature="e#3895#4637#0" expanded="false" />
+            <element signature="e#4688#5672#0" expanded="false" />
+            <element signature="e#6834#7036#0" expanded="false" />
+            <element signature="e#7075#9105#0" expanded="false" />
+            <element signature="e#9150#10277#0" expanded="false" />
+            <element signature="e#10331#10662#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Temp/temp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.087890625" vertical-offset="0" max-vertical-offset="512">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.2822086" vertical-offset="237" max-vertical-offset="750">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#54#0" expanded="false" />
+            <element signature="e#597#1077#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -718,22 +810,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/GMM.py">
+    <entry file="file://$PROJECT_DIR$/Test/peak_detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76171875" vertical-offset="0" max-vertical-offset="3045">
-          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="2355">
+          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/peak_detect_batch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2638037" vertical-offset="2166" max-vertical-offset="2685">
+          <caret line="153" column="51" selection-start-line="153" selection-start-column="51" selection-end-line="153" selection-end-column="51" />
           <folding>
-            <element signature="e#73#91#0" expanded="true" />
-            <element signature="e#505#2335#0" expanded="false" />
-            <element signature="e#2378#3257#0" expanded="false" />
-            <element signature="e#3302#3823#0" expanded="false" />
-            <element signature="e#3895#4637#0" expanded="false" />
-            <element signature="e#4688#5672#0" expanded="false" />
-            <element signature="e#5748#6789#0" expanded="false" />
-            <element signature="e#6842#7044#0" expanded="false" />
-            <element signature="e#7083#9113#0" expanded="false" />
-            <element signature="e#9158#10285#0" expanded="false" />
-            <element signature="e#10339#10670#0" expanded="false" />
+            <element signature="e#44#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
