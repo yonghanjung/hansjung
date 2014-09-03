@@ -122,6 +122,8 @@ public class batch_peak {
         int new_break_num = 0;
         double bat_start = 0;
         double Vpeak = 0;
+        List<Integer> RR_locs = new ArrayList<Integer>(); // 얘는 RR idx 위치만 잡음
+        List<Double> RR_interval = new ArrayList<Double>(); // Real RR Interval
 
 
 
@@ -156,14 +158,41 @@ public class batch_peak {
             }
 
             Map<Integer, Double>peak_detect =  peak_detection(bat_signal,Fs,StdPPG,bat_start, Sr, refract, Vpeak);
-
             Map<Integer, Double>new_peak = new HashMap<Integer, Double>();
-
-
 
             for(Integer key : peak_detect.keySet()){
                 new_peak.put( key + starting_idx, peak_detect.get(key)    );
             }
+
+            List<Integer>get_new_peak_key = GetKey(new_peak);
+            Collections.sort(get_new_peak_key);
+            List<Integer> big_temp = new ArrayList<Integer>();
+            List<Integer> small_temp = new ArrayList<Integer>();
+
+            if (bat_iter > 0){
+                if (get_new_peak_key.size()>0){
+                    RR_locs.add(get_new_peak_key.get(0) - starting_idx);
+                }
+            }
+
+            if (get_new_peak_key.size() > 0) {
+                for (int i = 1; i < get_new_peak_key.size(); i++) {
+                    big_temp.add(get_new_peak_key.get(i));
+                }
+
+                for (int i = 0; i < get_new_peak_key.size()-1; i++) {
+                    small_temp.add(get_new_peak_key.get(i));
+                }
+
+                for (int i = 0 ; i < get_new_peak_key.size() -1; i++){
+                    RR_locs.add( big_temp.get(i) - small_temp.get(i)      );
+                }
+            }
+
+            for (int i = 0; i < RR_locs.size(); i++){
+                RR_interval.add( (double) RR_locs.get(i) / 75    );
+            }
+
 
             for (Integer key : new_peak.keySet()){
                 new_max.put( key, new_peak.get(key)    );

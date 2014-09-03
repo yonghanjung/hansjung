@@ -29,6 +29,10 @@ def check_cross(prev_thr, prev_sig, cur_thr, cur_sig):
         return False
 
 
+def list_difference(mylist):
+    return [y-x for y, x in  zip(mylist[1:] , mylist[:-1] )    ]
+
+
 def adaptive_thr(mysignal, Fs, StdPPG, thr_old, Sr, refract, Vpeak):
     # thr_old 들어가는 인수는 출발값
 
@@ -105,13 +109,14 @@ def adaptive_thr(mysignal, Fs, StdPPG, thr_old, Sr, refract, Vpeak):
 def main():
     testnum, orig_mysignal = mydata()
     Fs = 75
-    bat_sec = 1
+    bat_sec = 5
     bat_idx = bat_sec * Fs
     bat_iter = 0
     Sr = -0.3
     refract = 1.0
     starting = 0
     gain_max = {}
+    RR_interval = []
 
 
     while 1:
@@ -148,8 +153,28 @@ def main():
         for key in mymax:
             new_mymax.update( { key + starting : mymax[key]      }  )
 
+        # 1. new_mymax 를 key로 sorting하고
+        # 2. sorting된 키의 차이를 저장할것
+
+        locs =  sorted(new_mymax.keys())
+        diff_locs = list_difference(locs)
+
+        if bat_iter > 0:
+            if len(new_mymax) > 0:
+                small_key = np.min( new_mymax.keys()  )
+                RR_interval.append(  small_key - starting   )
+            else:
+                pass
+
+        for idx in diff_locs:
+            RR_interval.append(idx)
+
+
+
+
         print bat_iter, " starting is ",starting
         print bat_iter, " NEW MYMAX : ", new_mymax
+        print bat_iter, "RR_interval", RR_interval
         gain_max.update(new_mymax)
         print bat_iter, "Gain MAX", gain_max.keys()
 
@@ -166,8 +191,8 @@ def main():
         if old_break_num == new_break_num:
             break
 
-
-    plt.show()
+    print RR_interval
+    #plt.show()
 
 
 if __name__ == "__main__":
