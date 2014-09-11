@@ -69,7 +69,7 @@
       <file leaf-file-name="Real_Time_Peak.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Real_Time_Peak.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82625484" vertical-offset="723" max-vertical-offset="1605">
+            <state vertical-scroll-proportion="1.7567568" vertical-offset="0" max-vertical-offset="1515">
               <caret line="236" column="27" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
               <folding>
                 <element signature="method#check_cross#0;class#Real_Time_Peak#0" expanded="false" />
@@ -1110,7 +1110,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Real_Time_Peak.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82625484" vertical-offset="723" max-vertical-offset="1605">
+        <state vertical-scroll-proportion="1.7567568" vertical-offset="0" max-vertical-offset="1515">
           <caret line="236" column="27" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
           <folding>
             <element signature="method#check_cross#0;class#Real_Time_Peak#0" expanded="false" />

@@ -235,12 +235,6 @@ public class Real_Time_Peak {
         }
 
         return mypeak_test;
-
-
-
-
-
-        Map<Integer, Double> train_peak = peak_detection()
     }
 
 }
