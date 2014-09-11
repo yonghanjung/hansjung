@@ -109,7 +109,7 @@ def adaptive_thr(mysignal, Fs, StdPPG, thr_old, Sr, refract, Vpeak):
 def main():
     testnum, orig_mysignal = mydata()
     Fs = 75
-    bat_sec = 5
+    bat_sec = 10
     bat_idx = bat_sec * Fs
     bat_iter = 0
     Sr = -0.3
@@ -179,6 +179,9 @@ def main():
         print bat_iter, "Gain MAX", gain_max.keys()
 
         plt.figure(bat_iter)
+        plt.title(str(bat_iter)+"th batch" )
+        plt.xlabel("Batch Index")
+        plt.ylabel("PPG Modified Voltage")
         plt.plot(bat_signal,'b')
         plt.plot(adap.values(),'g')
 
@@ -192,7 +195,7 @@ def main():
             break
 
     print RR_interval
-    #plt.show()
+    plt.show()
 
 
 if __name__ == "__main__":

@@ -3,51 +3,32 @@ __author__ = 'jeong-yonghan'
 
 import numpy as np
 import matplotlib.pyplot as plt
-import Module.Wavelet as wavelet
 
 def main():
     # TRAIN
     testnum, mysignal = mydata()
     fs = 75
-    sec = 5
+    sec = 3
+    see = 30
     train_sig = mysignal[:fs*sec]
-    test_sig = mysignal[fs*sec : ]
-    window_size = 10
-
-    bl = []
-    for idx in range(31):
-        if idx == 0:
-            bl.append(1)
-        elif idx == 15:
-            bl.append(-2)
-        elif idx == 30:
-            bl.append(1)
-        else:
-            bl.append(0)
-    al = [1, -2, 1]
-    temp = [1] + [0]* 12
-
-    hl = wavelet.myfilter(bl,al,temp)
-
-    denoise_sig = conv(train_sig,hl,'same')
+    test_sig = mysignal[fs*sec : fs*sec + fs*see]
+    window_size = 13
 
     SSF_train = SSF_newsignal(train_signal= train_sig, window_size= window_size)
-    SSF_denoise = SSF_newsignal(train_signal=denoise_sig, window_size=window_size)
     SSF_train = [0] * window_size + SSF_train
-    SSF_denoise = [0] * window_size + SSF_train
 
     plt.figure(0)
     #plt.title(str(testnum)+ "th train signal")
-    plt.title(str(testnum) + "th raw signal")
+    plt.title(str(testnum) + "th raw signal " + str(window_size) +  " samples window")
     plt.plot(train_sig,'b')
     plt.plot(SSF_train,'r')
-    plt.plot(SSF_denoise,'g')
     #plt.show()
 
     ## Threshold
-    _, train_max = adaptive_thr(SSF_train,Fs=fs)
-    #for key in train_max:
-    #    plt.plot(key, train_max[key],'bo')
+    adap, train_max = adaptive_thr(SSF_train,Fs=fs)
+    for key in train_max:
+        plt.plot(key, train_max[key],'bo')
+    plt.plot(adap.keys(), adap.values(),'g')
 
 
 
@@ -57,7 +38,7 @@ def main():
     mythr = {}
     for idx in range(len(SSF_train)):
         mythr.update ( { idx : down_thres   }   )
-    #plt.plot(mythr.keys(), mythr.values(), 'r--')
+    plt.plot(mythr.keys(), mythr.values(), 'r--')
 
     init_window1 = train_sig[len(train_sig)-1 -window_size  : len(train_sig)-1]
     init_window2 = train_sig[len(train_sig) -2 - window_size : len(train_sig)-2]
@@ -68,15 +49,10 @@ def main():
     mypeak_SSF = {}
 
 
-    my_new_sig = []
     for idx in range(len(test_sig)):
         window.append(test_sig[idx])
         window.pop(0)
-        window = conv(window,hl)
         next = SSF(window)
-        #next_max = np.max(window)
-        #my_new_sig.append(float(next)/float(next_max))
-        my_new_sig.append(next)
 
         if saddle(prev,cur,next) == "peak" and cur > down_thres:
             mypeak_test.update( {   idx : test_sig[idx]       }    )
@@ -87,12 +63,9 @@ def main():
 
     plt.figure(1)
     SSF_test = SSF_newsignal(train_signal=test_sig, window_size= window_size)
-    plt.title(str(testnum)+ "th test signal")
-    #plt.plot(test_sig,'b')
-    #plt.plot(SSF_test,'r')
-    plt.plot(my_new_sig,'b')
-    print my_new_sig
-    '''
+    plt.title(str(testnum)+ "th test signal " + str(window_size) + " samples window")
+    plt.plot(test_sig,'b')
+    plt.plot(SSF_test,'r')
     for key in mypeak_test:
         plt.plot(key,mypeak_test[key],'bo')
     for key in mypeak_SSF:
@@ -102,7 +75,7 @@ def main():
     for idx in range(len(test_sig)):
         mythr.update ( { idx : down_thres   }   )
     plt.plot(mythr.keys(), mythr.values(), 'r--')
-    '''
+
     plt.show()
 
 def conv(a,b, option = 'full'):
@@ -155,7 +128,6 @@ def saddle(prev,cur,next):
         return "dec"
 
 
-
 def SSF_newsignal(train_signal, window_size):
     rem_size = len(train_signal)
     train_signal = train_signal + [0] * window_size
@@ -176,7 +148,6 @@ def check_cross(prev_thr, prev_sig, cur_thr, cur_sig):
             return False
     else:
         return False
-
 
 
 def adaptive_thr(mysignal, Fs):
@@ -272,9 +243,6 @@ def adaptive_thr(mysignal, Fs):
     return adap, mymax
 
 
-
-
-
 def SSF(window):
     diff_window = list_difference(window)
     modi = []
@@ -297,11 +265,12 @@ def mydata():
     from Module.data_call import data_call
     from Module.bandpass import butter_bandpass_filter
 
-    testnum = 2
+    testnum = 1
     mysignal = data_call("PPG_KW_long", testnum, 0)
 
     #mysignal = butter_bandpass_filter(mysignal,0.125,10,1000)
     return testnum, mysignal
+
 
 if __name__ == "__main__":
     main()
