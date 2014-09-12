@@ -194,7 +194,7 @@ public class Real_Time_Peak {
 
     }
 
-    Map<Integer, Double> real_time_peak(List<Double>test_signal){
+    List<Integer> real_time_peak(List<Double>test_signal){
         int Fs = 75;
         int sec = 3;
         int window_size = 10;
@@ -234,7 +234,12 @@ public class Real_Time_Peak {
 
         }
 
-        return mypeak_test;
+        List<Integer>answer = new ArrayList<Integer>();
+        for(Integer a : mypeak_test.keySet()){
+            answer.add(a);
+        }
+
+        return answer;
     }
 
 }

@@ -12,7 +12,7 @@ def main():
     see = 30
     train_sig = mysignal[:fs*sec]
     test_sig = mysignal[fs*sec : fs*sec + fs*see]
-    window_size = 13
+    window_size = 10
 
     SSF_train = SSF_newsignal(train_signal= train_sig, window_size= window_size)
     SSF_train = [0] * window_size + SSF_train
@@ -77,6 +77,7 @@ def main():
     plt.plot(mythr.keys(), mythr.values(), 'r--')
 
     plt.show()
+
 
 def conv(a,b, option = 'full'):
     lena = len(a)

@@ -71,16 +71,19 @@
       <file leaf-file-name="SSF_real.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test/SSF_real.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.51282054" vertical-offset="870" max-vertical-offset="1995">
-              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+            <state vertical-scroll-proportion="-0.2746781" vertical-offset="272" max-vertical-offset="738">
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
                 <element signature="e#54#72#0" expanded="true" />
-                <element signature="e#2298#3032#0" expanded="false" />
-                <element signature="e#3326#3561#0" expanded="false" />
-                <element signature="e#3623#3866#0" expanded="false" />
-                <element signature="e#3905#6310#0" expanded="false" />
-                <element signature="e#6600#6660#0" expanded="false" />
-                <element signature="e#6681#6936#0" expanded="false" />
+                <element signature="e#122#2260#0" expanded="false" />
+                <element signature="e#2299#3033#0" expanded="false" />
+                <element signature="e#3067#3274#0" expanded="false" />
+                <element signature="e#3327#3562#0" expanded="false" />
+                <element signature="e#3624#3867#0" expanded="false" />
+                <element signature="e#3906#6311#0" expanded="false" />
+                <element signature="e#6335#6565#0" expanded="false" />
+                <element signature="e#6601#6661#0" expanded="false" />
+                <element signature="e#6682#6937#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -278,7 +281,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Best_WCs/Best_WCs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../3.Kaggle/scikit_learn" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -580,7 +583,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25219297" sideWeight="0.5106383" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3380102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33887467" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1037,16 +1040,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/SSF_real.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.51282054" vertical-offset="870" max-vertical-offset="1995">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        <state vertical-scroll-proportion="-0.2746781" vertical-offset="272" max-vertical-offset="738">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="e#54#72#0" expanded="true" />
-            <element signature="e#2298#3032#0" expanded="false" />
-            <element signature="e#3326#3561#0" expanded="false" />
-            <element signature="e#3623#3866#0" expanded="false" />
-            <element signature="e#3905#6310#0" expanded="false" />
-            <element signature="e#6600#6660#0" expanded="false" />
-            <element signature="e#6681#6936#0" expanded="false" />
+            <element signature="e#122#2260#0" expanded="false" />
+            <element signature="e#2299#3033#0" expanded="false" />
+            <element signature="e#3067#3274#0" expanded="false" />
+            <element signature="e#3327#3562#0" expanded="false" />
+            <element signature="e#3624#3867#0" expanded="false" />
+            <element signature="e#3906#6311#0" expanded="false" />
+            <element signature="e#6335#6565#0" expanded="false" />
+            <element signature="e#6601#6661#0" expanded="false" />
+            <element signature="e#6682#6937#0" expanded="false" />
           </folding>
         </state>
       </provider>
